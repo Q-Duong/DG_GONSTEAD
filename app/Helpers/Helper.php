@@ -26,22 +26,28 @@ if (!function_exists('versionResource')) {
     }
 }
 
-if (!function_exists('saveImageFileDrive')) {
-    function saveImageFileDrive($file)
+if (!function_exists('saveFileSource')) {
+    function saveFileSource($file)
     {
-        $fileData = File::get($file);
-        $get_name_file = $file->getClientOriginalName();
-        $name_file = current(explode('.', $get_name_file));
-        $new_file =  $name_file . rand(0, 99) . '.' . $file->getClientOriginalExtension();
-        $specialCharacters = array('@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '/', '\\', '|', '[', ']', '{', '}', '<', '>', ',', '?', '!', ':', ';', '~', '`', "'", '"', ' ');
-        $name_revert = str_replace($specialCharacters, '_', $new_file);
-        Storage::cloud()->put($name_revert, $fileData);
-        $fileUploaded = Storage::cloud()->exists($name_revert)
-            ? collect(Storage::cloud()->listContents(dirname($name_revert)))
-            ->where('path', $name_revert)
-            ->first()
-            : null;
-        $response = ['fileName' => $name_revert, 'virtual_path' => $fileUploaded['extraMetadata']['virtual_path']];
+        $fileName = $file->getClientOriginalName();
+        $getName = current(explode('.', $fileName));
+        $fileNameConvert = Str::slug($getName) . '.' . $file->getClientOriginalExtension();
+        $folder = uniqid();
+        Storage::putFileAs('tmp/' . $folder, $file, $fileNameConvert);
+        $response = ['folder' => $folder, 'fileName' => $fileNameConvert];
+        return $response;
+    }
+}
+
+if (!function_exists('saveImagesCK')) {
+    function saveImagesCK($file)
+    {
+        $fileName = $file->getClientOriginalName();
+        $getName = current(explode('.', $fileName));
+        $fileNameConvert = Str::slug($getName) . '.' . $file->getClientOriginalExtension();
+        Storage::putFileAs('public/content/', $file, $fileNameConvert);
+        $url = asset('storage/content/' . $fileNameConvert);
+        $response = ['url' => $url, 'fileName' => $fileNameConvert];
         return $response;
     }
 }
@@ -54,38 +60,29 @@ if (!function_exists('deleteImageFileDrive')) {
     }
 }
 
-if (!function_exists('capitalizeWordsExceptAbbreviations')) {
-    function capitalizeWordsExceptAbbreviations($string)
+if (!function_exists('moveFileSource')) {
+    function moveFileSource($folder, $folderMove, $fileName)
     {
-        $abbreviations = ['TNHH', 'CP', 'LLC', 'LTD', 'JSC', 'XNK', 'THCS', 'THPT', 'MTV', 'TM', 'SX', 'NSTP', 'CN', 'KSK', 'ĐLTS', 'VN'];
-        $string = preg_replace('/\s+/', ' ', trim($string));
-        $words = explode(' ', $string);
-
-        foreach ($words as &$word) {
-            $firstChar = mb_substr($word, 0, 1, 'UTF-8');
-            $coreWord = $word;
-            if (preg_match('/[\(\[\{\'\"]/', $firstChar)) {
-                $coreWord = mb_substr($word, 1, null, 'UTF-8');
-            } else {
-                $firstChar = '';
-            }
-            if (in_array(strtoupper($coreWord), $abbreviations)) {
-                $coreWord = strtoupper($coreWord);
-            } else {
-                $firstLetter = mb_substr($coreWord, 0, 1, 'UTF-8');
-                $rest = mb_substr($coreWord, 1, null, 'UTF-8');
-                $coreWord = mb_strtoupper($firstLetter, 'UTF-8') . mb_strtolower($rest, 'UTF-8');
-            }
-            $word = $firstChar . $coreWord;
-        }
-
-        return implode(' ', $words);
+        Storage::move('tmp/' . $folder, 'public/' . $folderMove . '/' . $folder);
+        return $folderMove . '/' . $folder . '/' . $fileName;
     }
 }
 
-if (!function_exists('upperVietnamese')) {
-    function upperVietnamese($string)
+if (!function_exists('removeFileSource')) {
+    function removeFileSource($folder, $target)
     {
-        return mb_strtoupper($string, 'UTF-8');
+        if ($target) {
+            Storage::deleteDirectory('public/' . $folder);
+        } else {
+            Storage::deleteDirectory('tmp/' . $folder);
+        }
+    }
+}
+
+if (!function_exists('getFolderForDestroyFile')) {
+    function getFolderForDestroyFile($folder)
+    {
+        $folderFormat = explode('/', $folder);
+        return $folderFormat[0] . '/' . $folderFormat[1];
     }
 }

@@ -24,8 +24,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $getAllSlider = Slider::orderBy('id','ASC')->select(['slider_image',])->get();
-        $getAllService = Service::orderBy('id','ASC')->get();
-    	return view('pages.client.home')->with(compact('getAllSlider','getAllService'));
+    	return view('pages.client.home');
     }
 }

@@ -12,6 +12,5 @@ class TempFile extends Model
     protected $fillable = [
         'folder',
         'filename',
-        'path',
     ];
 }

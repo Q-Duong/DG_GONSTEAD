@@ -15,9 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         view()->composer('*',function($view) {
-            $getAllBlogCategory = BlogCategory::orderBy('id', 'ASC')->get();
-		    $getAllService = Service::orderBy('id','ASC')->get();
-            $view->with(compact('getAllBlogCategory','getAllService'));
+            // $getAllBlogCategory = BlogCategory::orderBy('id', 'ASC')->get();
+		    // $getAllService = Service::orderBy('id','ASC')->get();
+            // $view->with(compact('getAllBlogCategory','getAllService'));
         });
     }
 
