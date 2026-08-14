@@ -730,8 +730,8 @@
     <section class="cta-section section-padding section-bg">
         <div class="container">
             <div class="col-lg-8 col-12 mx-auto text-center">
-                    <h2 class="mb-0">@lang('master_pages.header.service')</h2>
-                    <p class="text-muted">@lang('master_pages.services.intro_desc')</p>
+                <h2 class="mb-0">@lang('master_pages.header.service')</h2>
+                <p class="text-muted">@lang('master_pages.services.intro_desc')</p>
             </div>
         </div>
     </section>
@@ -802,7 +802,7 @@
         </div>
     </section>
 
-    @if (count($blogs)>0)
+    @if (count($blogs) > 0)
         <section class="news-section section-padding">
             <div class="container">
                 <div class="row">
@@ -924,7 +924,9 @@
                         <div class="apple-contact-info">
                             <h4 class="text-primary">@lang('contact.info.branch_1.name')</h4>
                             <p><i class="bi bi-pin-map text-muted me-2"></i>@lang('contact.info.branch_1.address')</p>
-                            <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:0972767973"
+                            <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:1900633287"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone3')</a> - <a
+                                    href="tel:0972767973"
                                     class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone')</a> - <a
                                     href="tel:0777821112"
                                     class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone2')</a></p>
@@ -939,7 +941,9 @@
                             <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:0931731319"
                                     class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone')</a> - <a
                                     href="tel:0931761319"
-                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone2')</a></p>
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone2')</a> - <a
+                                    href="tel:0931711319"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone3')</a></p>
                         </div>
                     </div>
 

@@ -61,13 +61,12 @@
 
                         {{-- Khối chuyên gia tham vấn (Tăng tính minh bạch và E-E-A-T) --}}
                         <div class="author-box">
-                            <img src="{{ asset('assets/client/images/team/dao-anh-dung.jpg') }}" 
-                                 class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;" 
+                            <img src="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" 
+                                 class=" me-3" style="width: 80px; height: 60px; object-fit: cover;" 
                                  alt="@lang('faq.meta.author')">
                             <div>
                                 <small class="text-muted d-block">@lang('faq.meta.author_label')</small>
                                 <strong class="text-dark d-block">@lang('faq.meta.author')</strong>
-                                <small class="text-muted">@lang('faq.meta.author_title')</small>
                             </div>
                         </div>
 

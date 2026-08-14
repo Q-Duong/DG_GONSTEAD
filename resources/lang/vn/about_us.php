@@ -3,7 +3,7 @@
 return [
     'seo' => [
         'title' => 'Về chúng tôi | Tiên phong nắn chỉnh cột sống Gonstead',
-        'description' => 'Tìm hiểu về DG Gonstead - Đơn vị tiên phong ứng dụng phương pháp nắn chỉnh cột sống Gonstead chuẩn Mỹ tại Việt Nam, mang lại cuộc sống không đau nhức.',
+        'description' => 'Tìm hiểu về DG Gonstead - Đơn vị tiên phong ứng dụng phương pháp nắn chỉnh cột sống Gonstead tại Việt Nam, mang lại cuộc sống không đau nhức.',
     ],
     
     'video_alt' => 'Video giới thiệu về DG Gonstead cũng là giới thiệu về ngành Chiropractic',
@@ -38,14 +38,14 @@ return [
     'beliefs' => [
         'title' => 'NIỀM TIN CỦA PHƯƠNG PHÁP GONSTEAD',
         'items' => [
-            '1' => '1 Cơ thể bạn được tạo ra để sống hài hòa với tự nhiên.',
-            '2' => '2 Hệ thần kinh kiểm soát, phối hợp và điều hòa mọi chức năng trong cơ thể.',
-            '3' => '3 Khi hệ thần kinh bị cản trở, bạn sẽ không thể phát huy hết tiềm năng di truyền vốn có của mình.',
-            '4' => '4 Cột sống được thiết kế để nâng đỡ cơ thể và đồng thời bảo vệ hệ thần kinh trung ương.',
-            '5' => '5 Những sai lệch trong cột sống và cơ thể có thể dẫn đến rối loạn chức năng của hệ thần kinh.',
-            '6' => '6 Các sai lệch này có thể làm tăng sự hao mòn ở cột sống và cơ thể, từ đó gây ra các triệu chứng nguy hại.',
-            '7' => '7 Nếu không được chữa trị điều chỉnh, những sai lệch này có thể dẫn đến những tình trạng nghiêm trọng hơn cho cơ thể bạn trong tương lai.',
-            '8' => '8 Hãy kiểm tra cột sống và cơ thể của bạn để phát hiện và điều chỉnh các sai lệch để nâng cao chất lượng cơ thể cũng như cuộc sống của bạn.',
+            '1' => '1. Cơ thể bạn được tạo ra để sống hài hòa với tự nhiên.',
+            '2' => '2. Hệ thần kinh kiểm soát, phối hợp và điều hòa mọi chức năng trong cơ thể.',
+            '3' => '3. Khi hệ thần kinh bị cản trở, bạn sẽ không thể phát huy hết tiềm năng di truyền vốn có của mình.',
+            '4' => '4. Cột sống được thiết kế để nâng đỡ cơ thể và đồng thời bảo vệ hệ thần kinh trung ương.',
+            '5' => '5. Những sai lệch trong cột sống và cơ thể có thể dẫn đến rối loạn chức năng của hệ thần kinh.',
+            '6' => '6. Các sai lệch này có thể làm tăng sự hao mòn ở cột sống và cơ thể, từ đó gây ra các triệu chứng nguy hại.',
+            '7' => '7. Nếu không được chữa trị điều chỉnh, những sai lệch này có thể dẫn đến những tình trạng nghiêm trọng hơn cho cơ thể bạn trong tương lai.',
+            '8' => '8. Hãy kiểm tra cột sống và cơ thể của bạn để phát hiện và điều chỉnh các sai lệch để nâng cao chất lượng cơ thể cũng như cuộc sống của bạn.',
         ],
     ],
 ];

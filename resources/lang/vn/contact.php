@@ -3,7 +3,7 @@
 return [
     'seo' => [
         'title' => 'Liên hệ đặt lịch khám cột sống | DG Gonstead',
-        'description' => 'Liên hệ DG Gonstead để đặt lịch khám và nhận tư vấn phác đồ điều trị cột sống chuẩn Mỹ từ đội ngũ chuyên gia y tế hàng đầu.',
+        'description' => 'Liên hệ DG Gonstead để đặt lịch khám và nhận tư vấn phác đồ điều trị cột sống từ đội ngũ chuyên gia y tế hàng đầu.',
     ],
     
     'header' => [
@@ -17,13 +17,15 @@ return [
             'name' => 'DG Gonstead TP. Hồ Chí Minh',
             'address' => '94 Đồng Văn Cống, P. Cát Lái, TP. Hồ Chí Minh (Ngã ba giao với đường Tạ Hiện)',
             'phone' => '0972 76 79 73',
-            'phone2' => '0777 82 11 12'
+            'phone2' => '0777 82 11 12',
+            'phone3' => '1900 633 287'
         ],
         'branch_2' => [
             'name' => 'DG Gonstead Hà Nội',
             'address' => '63 Louis I, Khu đô thi Louis City Đại Mỗ, P. Đại Mỗ, Hà Nội',
             'phone' => '0931 731 319',
-            'phone2' => '0931 761 319'
+            'phone2' => '0931 761 319',
+            'phone3' => '0931 711 319'
         ],
         'branch_3' => [
             'name' => 'DG Gonstead Đà Lạt',

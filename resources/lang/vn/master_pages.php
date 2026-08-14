@@ -2,8 +2,8 @@
 
 return [
     'seo' => [
-        'title' => 'DG Gonstead - Nắn chỉnh cột sống chuẩn Mỹ',
-        'description' => 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống Gonstead chuẩn Mỹ, điều trị thoát vị đĩa đệm, thoái hóa cột sống an toàn, không cần phẫu thuật.',
+        'title' => 'DG Gonstead - Chuyên gia điều trị thần kinh cột sống',
+        'description' => 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống Gonstead , điều trị thoát vị đĩa đệm, thoái hóa cột sống an toàn, không cần phẫu thuật.',
     ],
 
     'header' => [

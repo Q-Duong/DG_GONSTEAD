@@ -99,6 +99,11 @@
                         href="{{ route('contact.index') }}">@lang('master_pages.header.contact')</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('faq.index') ? 'active' : '' }}"
+                        href="{{ route('faq.index') }}">@lang('master_pages.header.faq')</a>
+                </li>
+
                 {{-- <li class="nav-item ms-3">
                     <div class="globalnav-languages-item">
                         <button class="button-languages" dropdown="false">

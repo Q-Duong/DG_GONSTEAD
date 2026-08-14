@@ -8,7 +8,7 @@ return [
 
     'header' => [
         'title' => 'Dịch Vụ',
-        'subtitle' => 'Giải pháp phục hồi cột sống chuyên sâu chuẩn Mỹ, không xâm lấn, không dùng thuốc.',
+        'subtitle' => 'Giải pháp phục hồi cột sống chuyên sâu, không xâm lấn, không dùng thuốc.',
     ],
 
     'meta' => [

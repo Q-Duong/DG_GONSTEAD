@@ -14,7 +14,7 @@ return [
     'meta' => [
         'read_more' => 'Xem phân tích chi tiết',
         'author_label' => 'Tham vấn y khoa:',
-        'author' => 'Chuyên gia Đào Anh Dũng',
+        'author' => 'Phòng Khám DG Gonstead',
         'author_title' => 'Chủ tịch DG Gonstead',
         'disclaimer' => '* Tuyên bố miễn trừ trách nhiệm y tế: Nội dung phân tích mang tính chất khách quan...'
     ],
@@ -138,10 +138,10 @@ return [
             'seo_description' => 'DG Gonstead đã điều trị cho hơn 18.000 bệnh nhân trong 2 năm với tỷ lệ thành công lên đến 90%, không xâm lấn, không dùng thuốc, không phẫu thuật.',
             'question' => '5. Có ai chữa trị ở đây thành công chưa?',
             'date' => '13 tháng 08, 2026',
-            'short_answer' => 'Hơn 18.000 bệnh nhân trong 2 năm hoạt động với tỷ lệ thành công lên đến 90%. Chúng tôi luôn cố gắng hết sức dùng khoa học kỹ thuật của phương pháp Gonstead để cứu chữa mà không cần xâm lấn, không dùng thuốc và không phẫu thuật.',
+            'short_answer' => 'Hơn 10.000 bệnh nhân trong 2 năm hoạt động với tỷ lệ thành công lên đến 90%. Chúng tôi luôn cố gắng hết sức dùng khoa học kỹ thuật của phương pháp Gonstead để cứu chữa mà không cần xâm lấn, không dùng thuốc và không phẫu thuật.',
             'full_content' => '
-                <p>Hơn 18.000 bệnh nhân trong 2 năm hoạt động, tỷ lệ thành công lên đến 90%, ở DG Gonstead chúng tôi không nói bệnh gì cũng chữa được cũng không phải là thần y nhưng trên tâm thế sẽ cố gắng hết sức để dùng khoa học kỹ thuật của phương pháp Gonstead để cứu chữa những người gặp vấn đề về thần kinh cột sống mà không cần xâm lấn, không dùng thuốc và không phẫu thuật.</p>
-                <p>Tất cả bệnh nhân trong các chia sẻ trên các nền tảng mạng xã hội đều là thật, còn có nhiều người nói ác ý nói toàn diễn viên đi thuê, các bạn có thể kiểm tra liên hệ hỏi trực tiếp thoải mái, các bạn có thể không tin nhưng xin đừng nghĩ xấu và nói xấu các bệnh nhân!</p>
+                <p>Hơn 10.000 bệnh nhân trong 2 năm hoạt động, tỷ lệ thành công lên đến 90%, ở DG Gonstead chúng tôi không nói bệnh gì cũng chữa được cũng không phải là thần y nhưng trên tâm thế sẽ cố gắng hết sức để dùng khoa học kỹ thuật của phương pháp Gonstead để cứu chữa những người gặp vấn đề về thần kinh cột sống mà không cần xâm lấn, không dùng thuốc và không phẫu thuật.</p>
+                <p>Tất cả bệnh nhân trong các chia sẻ trên các nền tảng mạng xã hội đều là thật, còn có nhiều người nói ác ý nói toàn diễn viên đi thuê, các bạn có thể kiểm tra liên hệ hỏi trực tiếp thoải mái, DG Gonstead cam kết tất cả đều là những chia sẻ từ các bệnh nhân người thật việc thật.</p>
             ',
         ],
     ]
