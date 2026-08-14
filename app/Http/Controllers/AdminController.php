@@ -27,7 +27,7 @@ class AdminController extends Controller
 
     public function login(){
         if(Auth::check()){
-            return Redirect::route('dashboard.index');
+            return Redirect::route('admin.dashboard.index');
         }else{
             return view('pages.admin.login.index');
         }

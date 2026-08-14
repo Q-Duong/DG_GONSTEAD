@@ -138,7 +138,9 @@ class BlogController extends Controller
     //Client
     public function index()
     {
-        return view('pages.client.blog.index');
+        $blogs = Blog::orderBy('blogs.id', 'DESC')
+            ->paginate(10);
+        return view('pages.client.blog.index', compact('blogs'));
     }
 
     public function detail($blog_slug)

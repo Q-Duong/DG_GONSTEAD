@@ -2,29 +2,41 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-12 mb-4">
-                <img src="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" class="logo img-fluid" alt="">
+                <img src="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" class="logo img-fluid" alt="@lang('master_pages.footer.logo_alt')">
             </div>
             <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <h5 class="site-footer-title mb-3">@lang('master_pages.footer.quickLinks')</h5>
                 <ul class="footer-menu">
                     <li class="footer-menu-item">
-                        <a class="footer-menu-link" href="#top">@lang('master_pages.header.home')</a>
+                        <a class="footer-menu-link" href="{{ route('about_us.index') }}">@lang('master_pages.header.aboutUs')</a>
                     </li>
 
                     <li class="footer-menu-item">
-                        <a class="footer-menu-link" href="#section_2">@lang('master_pages.header.aboutUs')</a>
+                        <a class="footer-menu-link" href="{{ route('legal.index') }}">@lang('master_pages.header.legal')</a>
+                    </li>
+
+                    {{-- <li class="footer-menu-item">
+                        <a class="footer-menu-link" href="{{ route('team_experts.index') }}">@lang('master_pages.header.team_experts')</a>
+                    </li> --}}
+
+                    <li class="footer-menu-item">
+                        <a class="footer-menu-link" href="#section_5">@lang('master_pages.header.service')</a>
                     </li>
 
                     <li class="footer-menu-item">
-                        <a class="footer-menu-link" href="#section_3">@lang('master_pages.header.service')</a>
+                        <a class="footer-menu-link" href="{{ route('testimonials.index') }}">@lang('master_pages.header.testimonials')</a>
                     </li>
 
                     <li class="footer-menu-item">
-                        <a class="footer-menu-link" href="#section_4">@lang('master_pages.header.blog')</a>
+                        <a class="footer-menu-link" href="{{ route('blog.index') }}">@lang('master_pages.header.blog')</a>
                     </li>
 
                     <li class="footer-menu-item">
-                        <a class="footer-menu-link" href="#section_5">@lang('master_pages.header.contact')</a>
+                        <a class="footer-menu-link" href="{{ route('contact.index') }}">@lang('master_pages.header.contact')</a>
+                    </li>
+
+                    <li class="footer-menu-item">
+                        <a class="footer-menu-link" href="{{ route('faq.index') }}">@lang('master_pages.header.faq')</a>
                     </li>
                 </ul>
             </div>
@@ -59,29 +71,29 @@
                 <div class="d-flex mb-1">
                     <h5>@lang('master_pages.footer.connectWithUs')</h5>
                 </div>
-                <ul class="social-icon">
-                    <li class="social-icon-item">
+                <ul class="social-icon-home">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.tiktok.com/@dunggonstead"
-                            class="social-icon-link bi bi-tiktok"></a>
+                            class="social-icon-link-home bi bi-tiktok"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.facebook.com/profile.php?id=61554579022426"
-                            class="social-icon-link bi-facebook"></a>
+                            class="social-icon-link-home bi-facebook"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.instagram.com/dgchiropracticgonstead"
-                            class="social-icon-link bi-instagram"></a>
+                            class="social-icon-link-home bi-instagram"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.youtube.com/@DGGonstead"
-                            class="social-icon-link bi-youtube"></a>
+                            class="social-icon-link-home bi-youtube"></a>
                     </li>
 
-                    <li class="social-icon-item">
-                        <a href="mailto:dgchiro.gonstead@gmail.com" class="social-icon-link bi-envelope"></a>
+                    <li class="social-icon-item-home">
+                        <a href="mailto:dgchiro.gonstead@gmail.com" class="social-icon-link-home bi-envelope"></a>
                     </li>
                 </ul>
             </div>

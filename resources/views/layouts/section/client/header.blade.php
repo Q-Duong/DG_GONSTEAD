@@ -19,28 +19,28 @@
             </div>
 
             <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
-                <ul class="social-icon">
-                    <li class="social-icon-item">
+                <ul class="social-icon-home">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.tiktok.com/@dunggonstead"
                             class="social-icon-link bi bi-tiktok"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.facebook.com/profile.php?id=61554579022426"
                             class="social-icon-link bi-facebook"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.instagram.com/dgchiropracticgonstead"
                             class="social-icon-link bi-instagram"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a target="_blank" href="https://www.youtube.com/@DGGonstead"
                             class="social-icon-link bi-youtube"></a>
                     </li>
 
-                    <li class="social-icon-item">
+                    <li class="social-icon-item-home">
                         <a href="mailto:dgchiro.gonstead@gmail.com" class="social-icon-link bi-envelope"></a>
                     </li>
                 </ul>
@@ -52,9 +52,9 @@
 
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{ route('home.index') }}">
             <img src="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" class="logo img-fluid"
-                alt="Kind Heart Charity">
+                alt="DG Gonstead Logo">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -63,25 +63,40 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#top">@lang('master_pages.header.home')</a>
+                    <a class="nav-link {{ request()->routeIs('about_us.index') ? 'active' : '' }}"
+                        href="{{ route('about_us.index') }}">@lang('master_pages.header.aboutUs')</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_2">@lang('master_pages.header.aboutUs')</a>
+                    <a class="nav-link {{ request()->routeIs('legal.index') ? 'active' : '' }}"
+                        href="{{ route('legal.index') }}">@lang('master_pages.header.legal')</a>
+                </li>
+
+                {{-- <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('team_experts.index') ? 'active' : '' }}"
+                        href="{{ route('team_experts.index') }}">@lang('master_pages.header.team_experts')</a>
+                </li> --}}
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('services.index') ? 'active' : '' }}"
+                        href="{{ route('services.index') }}">@lang('master_pages.header.service')</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_3">@lang('master_pages.header.service')</a>
+                    <a class="nav-link {{ request()->routeIs('testimonials.index') ? 'active' : '' }}"
+                        href="{{ route('testimonials.index') }}">@lang('master_pages.header.testimonials')</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_4">@lang('master_pages.header.blog')</a>
+                    <a class="nav-link {{ request()->routeIs('blog.index') ? 'active' : '' }}"
+                        href="{{ route('blog.index') }}">@lang('master_pages.header.blog')</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_5">@lang('master_pages.header.contact')</a>
+                    <a class="nav-link {{ request()->routeIs('contact.index') ? 'active' : '' }}"
+                        href="{{ route('contact.index') }}">@lang('master_pages.header.contact')</a>
                 </li>
 
                 {{-- <li class="nav-item ms-3">
@@ -98,21 +113,18 @@
                         <div class="language-dropdown-menu languages-desktop">
                             <div class="globalnav__languages-list">
                                 <div class="language {{ App::getLocale() == 'vn' ? 'selection' : '' }}">
-                                    <a href="{{ Route('locale', 'vn') }}" class="language__link"
-                                        aria-label="@lang('master_pages.header.langVN')" data-analytics-title="@lang('master_pages.header.langVN')"
-                                        previewlistener="true"></a>
+                                    <a href="{{ route('locale', 'vn') }}" class="language__link"
+                                        aria-label="@lang('master_pages.header.langVN')" data-analytics-title="@lang('master_pages.header.langVN')"></a>
                                     <span class="language__flag">
-                                        <img src="{{ asset('assets/images/icon/vietnam.png') }}" alt="VietNamese">
+                                        <img src="{{ asset('assets/images/icon/vietnam.png') }}" alt="Tiếng Việt">
                                     </span>
                                     <span class="language__title">@lang('master_pages.header.vietnamese')</span>
                                 </div>
                                 <div class="language {{ App::getLocale() == 'en' ? 'selection' : '' }}">
-                                    <a href="{{ Route('locale', 'en') }}" class="language__link"
-                                        aria-label="@lang('master_pages.header.langEN')" data-analytics-title="@lang('master_pages.header.langEN')"
-                                        previewlistener="true"></a>
+                                    <a href="{{ route('locale', 'en') }}" class="language__link"
+                                        aria-label="@lang('master_pages.header.langEN')" data-analytics-title="@lang('master_pages.header.langEN')"></a>
                                     <span class="language__flag">
-                                        <img src="{{ asset('assets/images/icon/united-states.png') }}"
-                                            alt="English (United Kingdom)">
+                                        <img src="{{ asset('assets/images/icon/united-states.png') }}" alt="English">
                                     </span>
                                     <span class="language__title">@lang('master_pages.header.english')</span>
                                 </div>

@@ -63,9 +63,6 @@
     <script src="{{ versionResource('assets/admin/js/tool/main.min.js') }}"></script>
     @stack('js')
 
-    <script type="text/javascript">
-        var url_upload_image_ck = "{{ route('file.upload_image_ck', ['_token' => csrf_token()]) }}";
-    </script>
 </body>
 
 </html>

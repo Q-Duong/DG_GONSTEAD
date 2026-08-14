@@ -1,7 +1,7 @@
 <header class="header fixed-top clearfix">
     <!--logo start-->
     <div class="brand">
-        <a href="{{ route('dashboard.index') }}" class="logo">
+        <a href="{{ route('admin.dashboard.index') }}" class="logo">
             Medicen
         </a>
         <div class="sidebar-toggle-box">
@@ -105,41 +105,7 @@
             <li>
                 <div class="bmucDg"></div>
             </li>
-            @if (Auth::check())
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-                        <img alt="" src="{{ asset('frontend/img/new-logo.jpg') }}">
-                        <span class="username">
-                            {{ Auth::user()->profile->profile_lastname }}
-                        </span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu extended logout">
-                        <li>
-                            <div class="extended-info">
-                                <div class="extended-img">
-                                    <img src="{{ asset('frontend/img/new-logo.jpg') }}">
-                                </div>
-                                <div class="extended-cty">Medicen</div>
-                                <div class="extended-name">Chào, {{ Auth::user()->profile->profile_lastname }}
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="{{ route('information') }}"><i class=" fa fa-suitcase"></i>Thông tin</a>
-                        </li>
-                        <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i> Cài đặt</a></li>
-                        <li><a href="#"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
-                            </a>
-                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
-                                class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            @endif
+            
             <!-- user login dropdown end -->
         </ul>
         <!--search & user info end-->

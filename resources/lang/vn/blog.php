@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Tin tức y khoa & Cập nhật phương pháp Gonstead | DG Gonstead',
+        'description' => 'Cập nhật kiến thức bảo vệ cột sống, tin tức y khoa và các hoạt động mới nhất tại phòng khám phục hồi chức năng DG Gonstead.',
+    ],
+    
     'comments' => 'Comments',
     'writtenBy' => 'Written by',
     'leaveComment' => 'Leave A Comment',

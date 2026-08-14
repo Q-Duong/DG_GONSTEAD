@@ -3,11 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\AdminTestimonialController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
@@ -32,21 +36,56 @@ if (in_array($locale, ['en'])) {
 } else {
     App::setLocale('vn');
     $locale = '';
-    // abort(400);
 }
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-//Blog
-Route::prefix('blog')->group(function () {
-    Route::get('/', [BlogController::class, 'index'])->name('blog.index');
-    Route::get('/{blog_slug}', [BlogController::class, 'detail'])->name('blog.detail');
+Route::group(['prefix' => $locale], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+    //About us
+    Route::prefix('ve-chung-toi')->group(function () {
+        Route::get('/', [HomeController::class, 'aboutUsIndex'])->name('about_us.index');
+    });
+
+    //Legal
+    Route::prefix('phap-ly')->group(function () {
+        Route::get('/', [HomeController::class, 'legalIndex'])->name('legal.index');
+    });
+
+    //Team of experts
+    Route::prefix('doi-ngu-chuyen-mon')->group(function () {
+        Route::get('/', [HomeController::class, 'teamExpertsIndex'])->name('team_experts.index');
+    });
+
+    //Services
+    Route::prefix('dich-vu')->group(function () {
+        Route::get('/', [HomeController::class, 'servicesIndex'])->name('services.index');
+        Route::get('/{slug}', [HomeController::class, 'servicesShow'])->name('services.show');
+    });
+
+    //Blog
+    Route::prefix('tin-tuc')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+        Route::get('/{blog_slug}', [BlogController::class, 'detail'])->name('blog.detail');
+    });
+
+    //Contact
+    Route::prefix('lien-he')->group(function () {
+        Route::get('/', [HomeController::class, 'contactIndex'])->name('contact.index');
+        Route::post('/dat-lich', [ContactController::class, 'submitAppointment'])->name('contact.submit');
+    });
+
+    //Testimonials
+    Route::get('/cam-nhan', [TestimonialController::class, 'index'])->name('testimonials.index');
+
+    Route::get('/goc-giai-dap', [FaqController::class, 'index'])->name('faq.index');
+    Route::get('/goc-giai-dap/{slug}', [FaqController::class, 'show'])->name('faq.show');
 });
 
 Auth::routes();
 Route::get('/admin', [AdminController::class, 'login']);
 Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 //-------------------------------------------- Backend --------------------------------------------
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     //Dashboard
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard.index');
 
@@ -70,6 +109,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::patch('update', [BlogController::class, 'update'])->name('blog.update');
         Route::delete('delete', [BlogController::class, 'destroy'])->name('blog.destroy');
     });
+
+    Route::resource('testimonials', AdminTestimonialController::class);
 
     //File
     Route::prefix('file')->group(function () {
@@ -96,4 +137,4 @@ Route::prefix('clear')->group(function () {
 
 Route::get('/clear/route', [ConfigController::class, 'clearRoute']);
 
-Route::post('/upload-image-ck', [PostController::class, 'upload_image_ck'])->name('upload-image-ck');
+Route::post('/upload-image-ck', [BlogController::class, 'upload_image_ck'])->name('upload-image-ck');

@@ -1,45 +1,620 @@
 @extends('layouts.default')
+@section('title', __('master_pages.seo.title'))
+@section('seo_description', __('master_pages.seo.description'))
 @push('css')
     {{-- <link rel="stylesheet" href="{{ versionResource('assets/css/main.built.css') }}" type="text/css" as="style" /> --}}
+    <style>
+        .apple-service-card {
+            background-color: #f5f5f7;
+            border-radius: 24px;
+            overflow: hidden;
+            border: none;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            /* Khử gạch chân của link */
+        }
+
+        .apple-service-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+        }
+
+        /* Khung hình ảnh */
+        .apple-service-img-wrapper {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .apple-service-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .apple-service-card:hover .apple-service-img {
+            transform: scale(1.05);
+        }
+
+        /* Khung nội dung */
+        .apple-service-content {
+            padding: 35px 30px 30px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .apple-service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .apple-service-desc {
+            color: #495057;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .apple-service-link {
+            font-weight: 600;
+            color: #0071e3;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .apple-blog-card {
+            background-color: #f5f5f7;
+            border-radius: 24px;
+            overflow: hidden;
+            border: none;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .apple-blog-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .apple-blog-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            display: block;
+        }
+
+        .apple-blog-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Chìa khóa giúp ảnh luôn fill đầy khung */
+            object-position: center;
+            transition: transform 0.5s ease;
+            /* Hiệu ứng mượt khi zoom */
+        }
+
+        /* Zoom nhẹ ảnh khi hover thẻ */
+        .apple-blog-card:hover .apple-blog-img {
+            transform: scale(1.05);
+        }
+
+        .apple-blog-content {
+            padding: 24px 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .apple-blog-date {
+            font-size: 0.9rem;
+            color: #86868b;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .apple-blog-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            text-decoration: none;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .apple-blog-title:hover {
+            color: #0071e3;
+        }
+
+        /* Nút đọc thêm */
+        .apple-blog-readmore {
+            font-weight: 600;
+            color: #0071e3;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+            margin-top: auto;
+            /* Đẩy nút xuống sát đáy thẻ */
+        }
+
+        .apple-blog-readmore:hover {
+            text-decoration: underline;
+        }
+
+        .view-more-wrapper {
+            margin-top: 32px;
+            font-size: 17px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .apple-btn-submit {
+            background-color: #0071e3;
+            color: #fff;
+            border-radius: 980px;
+            padding: 16px 30px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .apple-btn-submit:hover {
+            background-color: #005bb5;
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        .apple-contact-card {
+            background-color: #f5f5f7;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .apple-contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .apple-contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #0071e3;
+            color: #fff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .apple-contact-info h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .apple-contact-info p {
+            color: #495057;
+            margin: 0 0 8px 0;
+            line-height: 1.6;
+        }
+
+        .apple-contact-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .apple-form-box {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0f0f0;
+        }
+
+        .apple-form-control {
+            background-color: #f5f5f7;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 1rem;
+            color: #1d1d1f;
+            transition: all 0.2s ease;
+        }
+
+        .apple-form-control:focus {
+            background-color: #fff;
+            border-color: #0071e3;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+            outline: none;
+        }
+
+        .apple-btn-submit {
+            background-color: #0071e3;
+            color: #fff;
+            border-radius: 980px;
+            padding: 16px 30px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .apple-btn-submit:hover {
+            background-color: #005bb5;
+            transform: scale(1.02);
+        }
+
+        .apple-map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 350px;
+            border: 1px solid #eaeaea;
+        }
+
+        .apple-map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .apple-home-review-card {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            /* Cực kỳ quan trọng để ảnh bo góc theo viền thẻ */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .apple-home-review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Khung chứa hình ảnh */
+        .review-cover-img {
+            width: 100%;
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f7;
+        }
+
+        .review-cover-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cắt ảnh vừa vặn, không bị méo */
+            object-position: top;
+            /* Ưu tiên lấy phần trên của ảnh (hữu ích với ảnh Zalo dài) */
+        }
+
+        /* Nhãn tin nhắn */
+        .badge-message {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 980px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Phần khung chứa chữ */
+        .review-body {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* Định dạng chữ và Info giữ nguyên sự sang trọng */
+        .quote-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #1d1d1f;
+            font-style: italic;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            background: #0071e3;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .name {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+            color: #1d1d1f;
+        }
+
+        .condition {
+            font-size: 0.85rem;
+            color: #86868b;
+        }
+
+        /* Nút Xem Thêm */
+        .btn-see-all-reviews {
+            display: inline-flex;
+            align-items: center;
+            background-color: transparent;
+            color: #0071e3;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 980px;
+            border: 2px solid #0071e3;
+            transition: all 0.3s ease;
+        }
+
+        .btn-see-all-reviews:hover {
+            background-color: #0071e3;
+            color: #ffffff;
+        }
+
+        .apple-social-card {
+            background-color: #f5f5f7;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            padding-bottom: 0;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .apple-social-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            transform: translateY(-3px);
+        }
+
+        .social-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .fb-icon {
+            background-color: #1877F2;
+        }
+
+        .tiktok-icon {
+            background-color: #000000;
+        }
+
+        .btn-social-follow {
+            padding: 8px 20px;
+            border-radius: 980px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .fb-btn {
+            background-color: rgba(24, 119, 242, 0.1);
+            color: #1877F2;
+        }
+
+        .fb-btn:hover {
+            background-color: #1877F2;
+            color: #fff;
+        }
+
+        .tiktok-btn {
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #000000;
+        }
+
+        .tiktok-btn:hover {
+            background-color: #000000;
+            color: #fff;
+        }
+
+        .social-embed-wrapper {
+            background-color: #ffffff;
+            border-top: 1px solid #e5e5ea;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 400px;
+            width: 100%;
+        }
+
+        .social-embed-wrapper iframe {
+            display: block;
+            margin: 0 auto;
+            min-height: 400px !important;
+        }
+
+        .tiktok-embed {
+            margin: 0 auto !important;
+            min-height: 400px !important;
+        }
+
+
+
+        .apple-bento-card {
+            background-color: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .apple-bento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Vùng chứa ảnh */
+        .bento-img-wrapper {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f7;
+        }
+
+        .bento-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Danh sách tự chia 2 cột */
+        .bento-list-1-col {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bento-list-1-col li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #424245;
+            line-height: 1.5;
+        }
+
+        .bento-list-2-cols {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            column-count: 2;
+            /* Phép thuật chia 2 cột ở đây */
+            column-gap: 40px;
+        }
+
+        .bento-list-2-cols li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #424245;
+            line-height: 1.5;
+            break-inside: avoid;
+            /* Tránh việc 1 dòng bị cắt nửa giữa 2 cột */
+        }
+
+        /* Khi xuống màn hình điện thoại, tự động gom lại thành 1 cột cho dễ đọc */
+        @media (max-width: 767px) {
+            .bento-list-2-cols {
+                column-count: 1;
+            }
+
+            .bento-content {
+                padding: 25px !important;
+            }
+        }
+    </style>
 @endpush
 @section('content')
     <section class="hero-section hero-section-full-height">
         <div class="container-fluid">
             <div class="row">
-
                 <div class="col-lg-12 col-12 p-0">
                     <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="{{ asset('assets/client/images/slide/hero_startframe_1.jpg') }}"
-                                    class="carousel-image img-fluid" alt="DG Gonstead - Bring your life back">
+                                    class="carousel-image img-fluid" alt="@lang('master_pages.hero.img_alt')">
 
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
-                                    <h1>DG Gonstead</h1>
-
-                                    <p>Bring your life back</p>
+                                    <h1>@lang('master_pages.hero.title')</h1>
+                                    <p>@lang('master_pages.hero.subtitle')</p>
                                 </div>
                             </div>
 
                             <div class="carousel-item">
                                 <img src="{{ asset('assets/client/images/slide/hero_startframe_2.png') }}"
-                                    class="carousel-image img-fluid" alt="DG Gonstead - Bring your life back">
+                                    class="carousel-image img-fluid" alt="@lang('master_pages.hero.img_alt')">
 
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
-                                    <h1>DG Gonstead</h1>
-
-                                    <p>Bring your life back</p>
+                                    <h1>@lang('master_pages.hero.title')</h1>
+                                    <p>@lang('master_pages.hero.subtitle')</p>
                                 </div>
                             </div>
 
                             <div class="carousel-item">
                                 <img src="{{ asset('assets/client/images/slide/hero_startframe_3.png') }}"
-                                    class="carousel-image img-fluid" alt="DG Gonstead - Bring your life back">
+                                    class="carousel-image img-fluid" alt="@lang('master_pages.hero.img_alt')">
 
                                 <div class="carousel-caption d-flex flex-column justify-content-end">
-                                    <h1>DG Gonstead</h1>
-
-                                    <p>Bring your life back</p>
+                                    <h1>@lang('master_pages.hero.title')</h1>
+                                    <p>@lang('master_pages.hero.subtitle')</p>
                                 </div>
                             </div>
                         </div>
@@ -47,85 +622,27 @@
                         <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">@lang('master_pages.hero.previous')</span>
                         </button>
 
                         <button class="carousel-control-next" type="button" data-bs-target="#hero-slide"
                             data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">@lang('master_pages.hero.next')</span>
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-
-    {{-- <section class="section-padding">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-10 col-12 text-center mx-auto">
-                    <h2 class="mb-5">Welcome to Kind Heart Charity</h2>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                    <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
-                            <img src="{{ asset('assets/client/images/icons/hands.png') }}"
-                                class="featured-block-image img-fluid" alt="">
-
-                            <p class="featured-block-text">Become a <strong>volunteer</strong></p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
-                    <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
-                            <img src="{{ asset('assets/client/images/icons/heart.png') }}"
-                                class="featured-block-image img-fluid" alt="">
-
-                            <p class="featured-block-text"><strong>Caring</strong> Earth</p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
-                    <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
-                            <img src="{{ asset('assets/client/images/icons/receive.png') }}"
-                                class="featured-block-image img-fluid" alt="">
-
-                            <p class="featured-block-text">Make a <strong>Donation</strong></p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                    <div class="featured-block d-flex justify-content-center align-items-center">
-                        <a href="donate.html" class="d-block">
-                            <img src="{{ asset('assets/client/images/icons/scholarship.png') }}"
-                                class="featured-block-image img-fluid" alt="">
-
-                            <p class="featured-block-text"><strong>Scholarship</strong> Program</p>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> --}}
-
-    <section class="section-padding section-bg" id="section_2">
+    <section class="section-padding section-bg">
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-4 col-12 mb-5 mb-lg-0">
                     <video controls autoplay playsinline muted loop class="custom-text-box-image img-fluid"
-                        alt="Video giới thiệu về DG Gonstead cũng là giới thiệu về ngành Chiropractic">
+                        alt="@lang('about_us.introduce')">
                         <source src="{{ asset('storage/DG-Gonstead.mp4') }}" type="video/mp4">
                         <source src="{{ asset('storage/DG-Gonstead.mp4') }}" type="video/ogg">
                         <source src="{{ asset('storage/DG-Gonstead.mp4') }}" type="video/webm">
@@ -136,41 +653,37 @@
                     <div class="custom-text-box">
                         <h2 class="mb-2">@lang('master_pages.header.aboutUs')</h2>
 
-                        <h5 class="mb-3">Công ty TNHH DG Gonstead (DG GONSTEAD)</h5>
+                        <h5 class="mb-3">@lang('about_us.intro.company_name')</h5>
 
-                        <p class="mb-0">DG Gonstead tập trung vào cung cấp các phương pháp điều trị không phẫu thuật,
-                            không dùng thuốc, không xâm lấn, nắn chỉnh cột sống, phục hồi chức năng để điều trị các vấn đề
-                            về cơ xương khớp.</p>
+                        <p class="mb-0">@lang('about_us.intro.desc')</p>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-7 col-md-7 col-12">
                             <div class="custom-text-box mb-lg-0">
-                                <h5 class="mb-3">@lang('master_pages.define.ourMission')</h5>
+                                <h5 class="mb-3">@lang('about_us.mission.title')</h5>
 
-                                <p>DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống theo nguyên lý Gonstead, kết hợp phục
-                                    hồi chức năng và chẩn đoán hình ảnh chính xác giúp mỗi cá nhân tái thiết lập trạng thái
-                                    cân bằng cơ – xương – thần kinh, từ đó khơi dậy nguồn năng lượng sống tiềm ẩn.</p>
+                                <p>@lang('about_us.mission.desc')</p>
 
                                 <ul class="custom-list mt-2">
                                     <li class="custom-list-item d-flex">
                                         <i class="bi-check custom-text-box-icon me-2"></i>
-                                        Không xâm lấn
+                                        @lang('about_us.mission.items.1')
                                     </li>
 
                                     <li class="custom-list-item d-flex">
                                         <i class="bi-check custom-text-box-icon me-2"></i>
-                                        Không phẫu thuật
+                                        @lang('about_us.mission.items.2')
                                     </li>
 
                                     <li class="custom-list-item d-flex">
                                         <i class="bi-check custom-text-box-icon me-2"></i>
-                                        Không dùng thuốc
+                                        @lang('about_us.mission.items.3')
                                     </li>
 
                                     <li class="custom-list-item d-flex">
                                         <i class="bi-check custom-text-box-icon me-2"></i>
-                                        Trả cơ thể về trạng thái cân bằng tự nhiên
+                                        @lang('about_us.mission.items.4')
                                     </li>
                                 </ul>
                             </div>
@@ -184,7 +697,7 @@
                                         <span class="counter-number-text"></span>
                                     </div>
 
-                                    <span class="counter-text">Thành lập</span>
+                                    <span class="counter-text">@lang('about_us.stats.establish')</span>
                                 </div>
 
                                 <div class="counter-thumb mt-4">
@@ -193,7 +706,7 @@
                                         <span class="counter-number-text">+</span>
                                     </div>
 
-                                    <span class="counter-text">Nhân viên</span>
+                                    <span class="counter-text">@lang('about_us.stats.staff')</span>
                                 </div>
 
                                 <div class="counter-thumb mt-4">
@@ -203,7 +716,7 @@
                                         <span class="counter-number-text">+</span>
                                     </div>
 
-                                    <span class="counter-text">Bệnh nhân</span>
+                                    <span class="counter-text">@lang('about_us.stats.patient')</span>
                                 </div>
                             </div>
                         </div>
@@ -213,653 +726,378 @@
             </div>
         </div>
     </section>
-    <section class="section-padding section-bg-grey">
+
+    <section class="cta-section section-padding section-bg">
         <div class="container">
-            <div class="row">
-
-                <div class="col-lg-7 col-md-6 col-12 order-2 order-md-2 order-lg-1 ms-auto mb-4 mb-lg-0">
-                    <div class="contact-info-wrap">
-                        <h2>Triết lý từ sự gắn kết tự nhiên, sự cộng hưởng hài hòa và sự kết hợp hoàn hảo</h2>
-                        <div class="contact-info">
-                            <p class="d-flex mb-2">
-                                “Cơ thể con người được ví như một cỗ máy vi diệu và cột sống không chỉ có chức năng nâng đỡ,
-                                mà còn là “chiếc áo giáp” bảo vệ hệ thần kinh trung ương – kết nối điều phối mọi hoạt động
-                                của cỗ máy đó. Nếu sự kết nối giữa não bộ và các bộ phận cơ thể bị ảnh hưởng, cỗ máy sẽ
-                                không thể làm việc hiệu quả và chỉ khi cột sống được điều chỉnh chính xác một cách chuẩn mực
-                                tự nhiên cơ thể bạn sẽ ăn uống ngon hơn, vận động tốt hơn, suy nghĩ tích cực hơn và chất
-                                lượng cuộc sống cũng từ đó sẽ tăng lên rất nhiều.”
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-6 col-12 order-1 order-md-1 order-lg-2 mb-4">
-                    <img src="{{ asset('assets/client/images/home-pages/the-synergy.webp') }}"
-                        class="custom-text-box-image img-fluid" alt="">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding section-bg-grey">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-5 col-md-5 col-12">
-                    <img src="{{ asset('assets/client/images/home-pages/the-blielf.jpg') }}"
-                        class="custom-text-box-image img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-6 col-12 ms-auto mb-5 mb-lg-0">
-                    <div class="contact-info-wrap">
-                        <h2>NIỀM TIN CỦA PHƯƠNG PHÁP GONSTEAD</h2>
-
-                        <div class="contact-info">
-                            <p class="d-flex mb-3">
-                                1 Cơ thể bạn được tạo ra để sống hài hòa với tự nhiên.</p>
-                            <p class="d-flex mb-3">
-                                2 Hệ thần kinh kiểm soát, phối hợp và điều hòa mọi chức năng trong cơ thể.
-                            </p>
-                            <p class="d-flex mb-3">
-                                3 Khi hệ thần kinh bị cản trở, bạn sẽ không thể phát huy hết tiềm năng di truyền vốn có của
-                                mình.
-                            </p>
-                            <p class="d-flex mb-3">
-                                4 Cột sống được thiết kế để nâng đỡ cơ thể và đồng thời bảo vệ hệ thần kinh trung ương.
-                            </p>
-                            <p class="d-flex mb-3">
-                                5 Những sai lệch trong cột sống và cơ thể có thể dẫn đến rối loạn chức năng của hệ thần
-                                kinh.
-                            </p>
-                            <p class="d-flex mb-3">
-                                6 Các sai lệch này có thể làm tăng sự hao mòn ở cột sống và cơ thể, từ đó gây ra các triệu
-                                chứng nguy hại.
-                            </p>
-                            <p class="d-flex mb-3">
-                                7 Nếu không được chữa trị điều chỉnh, những sai lệch này có thể dẫn đến những tình trạng
-                                nghiêm trọng hơn cho cơ thể bạn trong tương lai.
-                            </p>
-                            <p class="d-flex mb-3">
-                                8 Hãy kiểm tra cột sống và cơ thể của bạn để phát hiện và điều chỉnh các sai lệch để nâng
-                                cao chất lượng cơ thể cũng như cuộc sống của bạn.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section section-padding section-bg" id="section_3">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-
-                <div class="col-lg-4 col-12 me-auto">
+            <div class="col-lg-8 col-12 mx-auto text-center">
                     <h2 class="mb-0">@lang('master_pages.header.service')</h2>
-                    <p class="text-muted">DG Gonstead tập trung vào phương pháp điều trị “không phẫu thuật, không dùng
-                        thuốc, không xâm lấn”, ứng dụng kỹ thuật nắn chỉnh cột sống theo nguyên lý Gonstead, kết hợp phục
-                        hồi chức năng và chẩn đoán hình ảnh chính xác giúp mỗi cá nhân tái thiết lập trạng thái cân bằng cơ
-                        – xương – thần kinh, điều trị nhiều căn bệnh liên quan đến cột sống hệ thần kinh với những triệu
-                        chứng sau:</p>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                    <ul class="custom-list mt-2">
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Viêm khớp
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>Gai xương
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>Hội chứng ống cổ tay
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau cổ mãn tính
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Bệnh thoái hóa khớp
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Phình và thoát vị đĩa đệm
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Chóng mặt
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau cơ xơ hóa
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Tư thế đầu đưa ra trước
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau đầu
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau gối
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau lưng dưới
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau lưng giữa
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Chứng đau nửa đầu
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Tê bì và châm chích (tay và chân)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau cổ
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Vẹo cột sống
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau thần kinh tọa
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau vai và cánh tay
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Chấn thương thể thao
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Sai lệch đường cong cổ sinh lý của cột sống
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau và căng thẳng ở cột sống
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Rối loạn khớp thái dương hàm
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Vẹo cổ (nghiêng cổ bất thường)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Cổ bị chấn động mạnh ,đột ngột do tai nạn (thường do tai nạn giao thông)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Chóng mặt và rối loạn thăng bằng
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Trào ngược axit dạ dày
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Dị ứng
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Tự kỷ, Liệt Bell (liệt dây thần kinh mặt)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Bại não
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Bệnh Crohn (viêm ruột mạn tính)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Chức năng miễn dịch
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Hội chứng ruột kích thích
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Rối loạn thần kinh
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau liên quan đến thai kỳ
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Bệnh rễ thần kinh (chèn ép rễ thần kinh)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Chấn thương do căng thẳng lặp đi lặp lại (Repetitive Strain Injury – RSI)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Rối loạn co giật (động kinh)
-                        </li>
-                        <li class="d-flex">
-                            <i class="bi bi-dot"></i>
-                            Đau dây thần kinh sinh ba
-                        </li>
-                    </ul>
-                </div>
-
+                    <p class="text-muted">@lang('master_pages.services.intro_desc')</p>
             </div>
         </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" style="background-color: #fbfbfd;">
         <div class="container">
-            <div class="row">
 
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="{{ asset('assets/client/images/service/dau-moi-lung.jpg') }}"
-                            class="custom-block-image img-fluid" alt="">
+            <div class="row g-4">
 
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Đau Mỏi Lưng</h5>
-                                <p>Đau mỏi lưng thường gây khó chịu và ảnh hưởng đến sinh hoạt hằng ngày. Với phương pháp
-                                    Gonstead, cột sống sẽ được điều chỉnh nhẹ nhàng,chính xác , giúp cơ thể thư giãn, lấy
-                                    lại sự cân bằng và giảm đau hiệu quả.</p>
-                            </div>
-                            <div class="custom-btn btn">DG Gonstead</div>
+                <div class="col-lg-4 d-flex">
+                    <div class="apple-bento-card w-100">
+                        <div class="bento-img-wrapper" style="height: 330px;">
+                            <img src="{{ asset('assets/client/images/services/dau-cap.jpg') }}" alt="Đau cấp"
+                                class="bento-img">
+                        </div>
+
+                        <div class="bento-content" style="padding: 35px 30px; flex-grow: 1;">
+                            <h3 class="fw-bold mb-4" style="font-size: 1.4rem; color: #e30000;">
+                                <i class="bi bi-lightning-charge-fill me-2"></i>
+                                @lang('services.bento.dau-cap.title')
+                            </h3>
+
+                            <ul class="bento-list-1-col">
+                                @foreach (__('services.bento.dau-cap.items') as $item)
+                                    <li>
+                                        <i class="bi bi-check-circle-fill text-danger me-2 mt-1"></i>
+                                        <span>{{ $item }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="{{ asset('assets/client/images/service/co-vai-gay.jpg') }}"
-                            class="custom-block-image img-fluid" alt="">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Cổ – Vai – Gáy</h5>
-
-                                <p>Đau nhức vùng cổ, vai, gáy thường đến từ việc sai tư thế, stress hoặc làm việc quá sức.
-                                    Phương pháp Gonstead giúp giảm đau nhanh chóng, thư giãn cơ bắp, phục hồi vận động linh
-                                    hoạt và cải thiện chất lượng cuộc sống.
-                                </p>
-                            </div>
-                            <div class="custom-btn btn">DG Gonstead</div>
+                <div class="col-lg-8 d-flex">
+                    <div class="apple-bento-card w-100">
+                        <div class="bento-img-wrapper" style="height: 330px;">
+                            <img src="{{ asset('assets/client/images/services/co-xuong-khop.jpg') }}" alt="Cơ xương khớp"
+                                class="bento-img" style="object-position: top">
                         </div>
-                    </div>
-                </div>
+                        <div class="bento-content" style="padding: 35px 40px;">
+                            <h3 class="fw-bold mb-4" style="font-size: 1.4rem; color: #1d1d1f;">
+                                @lang('services.bento.man-tinh.title')
+                            </h3>
 
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="{{ asset('assets/client/images/service/thoat-vi-dia-dem.jpg') }}"
-                            class="custom-block-image img-fluid" alt="">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Thoát Vị Đĩa Đệm</h5>
-                                <p>Thoát vị đĩa đệm không chỉ gây đau mà còn làm hạn chế vận động. Tại DG Gonstead, chúng
-                                    tôi áp dụng kỹ thuật chỉnh trị an toàn, nhẹ nhàng, giúp giảm áp lực lên dây thần kinh,
-                                    hỗ trợ vận động linh hoạt và hạn chế tái phát.</p>
-                            </div>
-                            <div class="custom-btn btn">DG Gonstead</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="{{ asset('assets/client/images/service/cong-veo-cot-song.jpg') }}"
-                            class="custom-block-image img-fluid" alt="">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Cong Vẹo Cột Sống, Gù Lưng – Cổ Rùa</h5>
-                                <p>Tình trạng gù lưng, vẹo cột sống hay cổ rùa khiến vóc dáng mất cân đối và ảnh hưởng đến
-                                    sức khỏe tổng thể. Với phương pháp Gonstead, từng đốt sống được chỉnh trị chính xác,
-                                    giúp cải thiện tư thế, dáng đi và duy trì sức khỏe lâu dài.</p>
-                            </div>
-                            <div class="custom-btn btn">DG Gonstead</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="{{ asset('assets/client/images/service/thoai-hoa.jpg') }}"
-                            class="custom-block-image img-fluid" alt="">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Thoái Hóa, Gai Đốt Sống</h5>
-
-                                <p>Thoái hóa hay gai cột sống thường gặp ở người lớn tuổi hoặc người lao động nặng. phương
-                                    pháp Gonstead kết hợp với các bài tập hỗ trợ giúp làm dịu cơn đau, tăng cường vận động
-                                    và mang lại cuộc sống thoải mái, dễ chịu hơn.
-                                </p>
-                            </div>
-                            <div class="custom-btn btn">DG Gonstead</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="custom-block-wrap">
-                        <img src="{{ asset('assets/client/images/service/dau-than-kinh-toa.png') }}"
-                            class="custom-block-image img-fluid" alt="">
-
-                        <div class="custom-block">
-                            <div class="custom-block-body">
-                                <h5 class="mb-3">Đau Thần Kinh Tọa, Tê Bì Chân Tay</h5>
-                                <p>Tình trạng đau thần kinh tọa hay tê bì chân tay khiến việc đi lại, cử động trở nên khó
-                                    khăn. Tại DG Gonstead, chúng tôi thăm khám kỹ lưỡng để tìm đúng nguyên nhân và đưa ra
-                                    phác đồ điều chỉnh phù hợp. Với kỹ thuật chỉnh trị chính xác, cơn đau được giảm nhẹ, cảm
-                                    giác được phục hồi và hệ thần kinh lưu thông tốt hơn.</p>
-                            </div>
-                            <div class="custom-btn btn">DG Gonstead</div>
+                            <ul class="bento-list-2-cols">
+                                @foreach (__('services.bento.man-tinh.items') as $item)
+                                    <li>
+                                        <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                                        <span>{{ $item }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
 
             </div>
+
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <a href="{{ route('services.index') }}"
+                        class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold">
+                        @lang('master_pages.button.view_more')
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="news-section section-padding" id="section_4">
+    @if (count($blogs)>0)
+        <section class="news-section section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 mb-5">
+                        <h2>@lang('master_pages.header.blog')</h2>
+                    </div>
+
+                    @foreach ($blogs as $key => $blog)
+                        <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
+                            <div class="apple-blog-card w-100">
+                                <a href="{{ route('blog.detail', $blog->blog_slug) }}" class="apple-blog-img-wrapper">
+                                    <img src="{{ asset('assets/client/images/news/medium-shot-1.jpg') }}"
+                                        class="apple-blog-img" alt="{{ $blog->blog_title }}">
+                                </a>
+
+                                <div class="apple-blog-content">
+                                    <div>
+                                        <div class="apple-blog-date">
+                                            <i class="bi-calendar-event me-2"></i>
+                                            {{ App::getLocale() == 'en' ? $blog->created_at->locale('en')->isoFormat('MMMM D, YYYY') : $blog->created_at->locale('vi')->isoFormat('D MMMM, YYYY') }}
+                                        </div>
+
+                                        <a href="{{ route('blog.detail', $blog->blog_slug) }}" class="apple-blog-title">
+                                            {{ $blog->blog_title }}
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <div class="view-more-wrapper">
+                        <a href="{{ route('blog.index') }}" class="apple-btn-submit" previewlistener="true">
+                            @lang('master_pages.button.view_more')</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <section class="section-padding" style="background-color: #fbfbfd;">
         <div class="container">
+
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="fw-bold" style="font-size: 2.2rem; color: #1d1d1f; letter-spacing: -0.5px;">
+                        @lang('master_pages.testimonials.title')
+                    </h2>
+                    <p class="text-muted mt-2" style="font-size: 1.1rem;">
+                        @lang('master_pages.testimonials.subtitle')
+                    </p>
+                </div>
+            </div>
+
             <div class="row">
+                @foreach ($testimonials as $review)
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="apple-home-review-card w-100">
+
+                            @if ($review->image)
+                                <div class="review-cover-img">
+                                    <img src="{{ asset('storage/' . $review->image) }}" alt="{{ $review->name }}">
+                                    @if ($review->image_type == 'screenshot')
+                                        <span class="badge-message"><i class="bi bi-chat-dots"></i> Tin nhắn</span>
+                                    @endif
+                                </div>
+                            @endif
+
+                            <div class="review-body">
+                                @if (!empty($review->content))
+                                    <div class="quote-text flex-grow-1">
+                                        "{{ Str::limit($review->content, 110, '...') }}"
+                                    </div>
+                                @endif
+
+
+                                <div class="customer-info mt-4">
+                                    <div class="avatar">{{ mb_substr($review->name, 0, 1) }}</div>
+                                    <div class="details">
+                                        <h5 class="name">{{ $review->name }}</h5>
+                                        <span class="condition">{{ $review->condition }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="{{ route('testimonials.index') }}" class="btn-see-all-reviews">
+                        @lang('master_pages.testimonials.button') <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section section-padding">
+        <div class="container">
+            <div class="row justify-content-between">
 
                 <div class="col-lg-12 col-12 mb-5">
-                    <h2>@lang('master_pages.header.blog')</h2>
+                    <h2>@lang('master_pages.header.contact')</h2>
                 </div>
 
-                <div class="col-lg-6 col-12">
-                    <div class="news-block">
-                        <div class="news-block-top">
-                            <a target="_blank" href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
-                                <img src="{{ asset('assets/client/images/news/medium-shot-1.jpg') }}"
-                                    class="news-image img-fluid" alt="">
-                            </a>
-                        </div>
 
-                        <div class="news-block-info">
-                            <div class="d-flex mt-2">
-                                <div class="news-block-date">
-                                    <p>
-                                        <i class="bi-calendar4 custom-icon me-1"></i>
-                                        12:18 28/02/2026
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div class="news-block-title mb-2">
-                                <h4><a target="_blank" href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ" class="news-block-title-link">Đào Anh Dũng - Người xây nền móng cho điều trị cột sống chuẩn mực tại Việt Nam</a></h4>
-                            </div>
+                <div class="col-lg-5 col-12 mb-5 mb-lg-0">
+                    <h3 class="fw-bold mb-4">@lang('contact.info.heading')</h3>
 
-                            <div class="news-block-body">
-                                <p>TRUNG TÂM THÔNG TIN TƯ LIỆU SỨC KHỎE VÀ CỘNG ĐỒNG</p>
-                            </div>
+                    <div class="apple-contact-card">
+                        <div class="apple-contact-icon"><i class="bi bi-building"></i></div>
+                        <div class="apple-contact-info">
+                            <h4 class="text-primary">@lang('contact.info.branch_1.name')</h4>
+                            <p><i class="bi bi-pin-map text-muted me-2"></i>@lang('contact.info.branch_1.address')</p>
+                            <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:0972767973"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone')</a> - <a
+                                    href="tel:0777821112"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone2')</a></p>
                         </div>
                     </div>
 
-
-                </div>
-
-                <div class="col-lg-6 col-12">
-                    <div class="news-block">
-                        <div class="news-block-top">
-                            <a target="_blank" href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
-                                <img src="{{ asset('assets/client/images/news/medium-shot-2.png') }}"
-                                    class="news-image img-fluid" alt="">
-                            </a>
+                    <div class="apple-contact-card">
+                        <div class="apple-contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                        <div class="apple-contact-info">
+                            <h4 class="text-primary">@lang('contact.info.branch_2.name')</h4>
+                            <p><i class="bi bi-pin-map text-muted me-2"></i>@lang('contact.info.branch_2.address')</p>
+                            <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:0931731319"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone')</a> - <a
+                                    href="tel:0931761319"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone2')</a></p>
                         </div>
+                    </div>
 
-                        <div class="news-block-info">
-                            <div class="d-flex mt-2">
-                                <div class="news-block-date">
-                                    <p>
-                                        <i class="bi-calendar4 custom-icon me-1"></i>
-                                        16:43 24/03/2026
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="news-block-title mb-2">
-                                <h4><a target="_blank" href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ" class="news-block-title-link">DG Gonstead và sứ mệnh phục hồi cột sống không xâm lấn</a>
-                                </h4>
-                            </div>
-
-                            <div class="news-block-body">
-                                <p>TRANG THÔNG TIN TRUYỀN THÔNG PHÁP LUẬT & CUỘC SỐNG</p>
-                            </div>
+                    <div class="apple-contact-card">
+                        <div class="apple-contact-icon" style="background-color: #34c759;"><i
+                                class="bi bi-clock-fill"></i>
+                        </div>
+                        <div class="apple-contact-info">
+                            <h4>@lang('contact.info.hours_title')</h4>
+                            <p>@lang('contact.info.hours_detail')</p>
                         </div>
                     </div>
                 </div>
 
+                <div class="col-lg-6 col-12">
+                    <div class="apple-form-box">
+                        <h3 class="fw-bold mb-4 text-center">@lang('contact.form.heading')</h3>
+                        <div id="ajaxMessage" class="alert d-none mb-4" style="border-radius: 16px;" role="alert">
+                        </div>
+                        <form id="appointmentForm" action="{{ route('contact.submit') }}" method="POST">
+                            @csrf
+                            <div class="mb-4 position-relative">
+                                <input type="text" class="apple-form-control w-100" name="name"
+                                    placeholder="@lang('contact.form.name')">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 position-relative">
+                                    <input type="tel" class="apple-form-control w-100" name="phone"
+                                        placeholder="@lang('contact.form.phone')">
+                                </div>
+                                <div class="col-md-6 mb-4 position-relative">
+                                    <input type="date" class="apple-form-control w-100" name="date">
+                                </div>
+                            </div>
+                            <div class="mb-4 position-relative">
+                                <select name="branch" class="apple-form-control w-100">
+                                    <option value="" disabled selected>@lang('contact.form.select_branch')</option>
+                                    <option value="@lang('contact.info.branch_1.name')">@lang('contact.info.branch_1.name')</option>
+                                    <option value="@lang('contact.info.branch_2.name')">@lang('contact.info.branch_2.name')</option>
+                                </select>
+                            </div>
+                            <div class="mb-4 position-relative">
+                                <textarea class="apple-form-control w-100" name="message" rows="3" placeholder="@lang('contact.form.message')"></textarea>
+                            </div>
+
+                            <button type="submit" id="submitBtn"
+                                class="apple-btn-submit d-flex justify-content-center align-items-center gap-2">
+                                <span>@lang('contact.form.submit_btn')</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="mt-5 pt-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h5 class="fw-bold mb-3">@lang('contact.info.branch_1.name')</h5>
+                            <div class="apple-map-container">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.406329420679!2d106.7556882!3d10.780158799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752500640e2cbf%3A0xda2338d491d15f40!2zQ8ahIHPhu58ga-G7uSB0aHXhuq10IFBIQ04gREcgR29uc3RlYWQ!5e0!3m2!1svi!2s!4v1757240983574!5m2!1svi!2s"
+                                    allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h5 class="fw-bold mb-3">@lang('contact.info.branch_2.name')</h5>
+                            <div class="apple-map-container">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.2051968873866!2d105.75896900974288!3d20.984410187780774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345348431ba949%3A0xbd97824930ccd540!2sDG%20Gonstead%20HN!5e0!3m2!1svi!2s!4v1786521446204!5m2!1svi!2s"
+                                    allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <section class="testimonial-section section-padding section-bg">
+    <section class="section-padding" style="background-color: #ffffff;">
         <div class="container">
-            <div class="row">
 
-                <div class="col-lg-8 col-12 mx-auto">
-                    <h2 class="mb-lg-3">Cảm nhận của khách hàng</h2>
-
-                    <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
-
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="carousel-caption">
-                                    <h6 class="carousel-title">Hôm nay em mới đi khám lần 4 về mặc dù đã khỏi từ lần hai.
-                                        ba. lần 4 kiểm tra lại cho chắc và em đã khỏi hẳn 10 điểm không có nhưng cho các bác
-                                        và phòng khám họ không những làm việc kiếm tiền mà còn thấu hiểu hiểu từng cơn đau
-                                        của bệnh nhân.họ làm từ tâm trong líp và y chan ngoài đời thật rất trân trọng và
-                                        biết ơn em cũng đã kết thúc liệu trình đi đứng ngon lành chúc ê kíp phòng khám công
-                                        tác thật tốt để cứu chữa được nhiều người bệnh như em.</h6>
-
-                                    <small class="carousel-name"><span class="carousel-name-title">Nhà May Bobo
-                                        </span></small>
-                                </div>
-                            </div>
-
-                            <div class="carousel-item">
-                                <div class="carousel-caption">
-                                    <h6 class="carousel-title">Hành trình này không phải là được “cứu chữa” theo nghĩa phụ
-                                        thuộc. Nó giống như kéo mình ra khỏi một quỹ đạo sai để tự mình bước lại cho đúng
-                                        cho vững. Và DG Gonstead, trong hành trình này, là một nhân duyên rất đáng biết ơn
-                                        và trân trọng.
-                                        Tương lai dù chưa rõ thế nào nhưng hiện tại mình đã rất mừng vui khôn xiết, thật
-                                        lòng mình xin trân trọng cảm ơn anh Đào Anh Dũng – Chủ tịch, anh Hoàng Trần và tập
-                                        thể DG Gonstead đã đưa tay cứu lấy mình thoát khỏi cơn đau cấp tính.</h6>
-
-                                    <small class="carousel-name"><span class="carousel-name-title">Nguyễn Thành Tốt
-                                        </span></small>
-                                </div>
-                            </div>
-
-                            <div class="carousel-item">
-                                <div class="carousel-caption">
-                                    <h6 class="carousel-title">THẬT LÒNG CÁM ƠN ANH VÀ TEAM DG GONSTEAD ĐÀ LẠT ĐÃ TẬN TÌNH
-                                        ĐIỀU TRỊ CĂN BỆNH THOÁT VỊ ĐĨA ĐỆM, ĐAU THẦN KINH TOẠ MÀ EM ĐÃ BỊ MẤY TUẦN NAY, LÀM
-                                        EM MẤT ĂN, MẤT NGỦ, ĐAU NHỨT CẢ NGÀY, KHÔNG THỂ NGỒI, ĐI ĐỨNG, CHỈ NẰM NHƯ MỘT NGƯỜI
-                                        BẠI LIỆT. SAU 1 LẦN ĐIỀU TRỊ CHỖ ANH, EM ĐÃ CÓ THỂ ĐI ĐƯỢC, NGỒI ĐƯỢC, CẢM GIÁC ĐAU
-                                        NHỨT CŨNG DẦN PHAI MẤT, HIỆU QUẢ GIẢM ĐẾN 70-80%, HY VỌNG ĐỢT ĐIỀU TRỊ LẦN 2 TIẾP
-                                        THEO SẼ CẢI THIỆN THÊM NỮA VÀ SẼ DẦN DẦN HỒI PHỤC HOÀN TOÀN NHƯ MỘT NGƯỜI BÌNH
-                                        THƯỜNG. CHÚC CÔNG TY ANH VÀ TEAM LUÔN LUÔN PHÁT TRIỂN VÀ SẼ LÀ ĐƠN VỊ ĐIỀU TRỊ Y HỌC
-                                        CỔ TRUYỀN LỚN MẠNH NHẤT.</h6>
-
-                                    <small class="carousel-name"><span class="carousel-name-title">Nguyễn Thanh Sang
-                                        </span></small>
-                                </div>
-                            </div>
-
-                            <div class="carousel-item">
-                                <div class="carousel-caption">
-                                    <h6 class="carousel-title">Hôm nay mình đã đến đây đều trị. Phải nói 1 cái là rất tuyệt
-                                        vời hơn những gì mình nghỉ. Trước khi tới đây mình đi đứng rất khó khăn và cong
-                                        chân. Vô khám bác sỹ nắn nót mà mình đã đi thẳng chân và lưng 1 cách không thể ngờ.
-                                        1 lần nữa cảm ơn các bác sỹ
-                                        Nếu ai bị như mình hãy đến đây đều trị nhé. Chị phí hợp với bệnh của mình ạ hiện tại
-                                        e đang đều trị ở đây.
-                                    </h6>
-
-                                    <small class="carousel-name"><span class="carousel-name-title">Utchi Le</span></small>
-                                </div>
-                            </div>
-
-                            <div class="carousel-item">
-                                <div class="carousel-caption">
-                                    <h6 class="carousel-title">Trong cuộc sống ai rồi cũng có lúc bệnh tật. Mẹ mh cũng thế.
-                                        Một người được mọi người hay gọi với cái tên thân thương gần gửi " Cô hai". Tuy bà
-                                        không được qua trường lớp nhưng lại được một cái biệt tài nắn xương khớp cho rất
-                                        nhiều người bị.
-                                        Nhưng rồi đầu năm nay. Ngay ngày mà mọi người đang chuẩn bị đón Tết thì mẹ lại bị
-                                        té.... bác sỹ bảo bị gãy xương sống. Rồi phải chật vật nằm một chỗ hết hơn 2 tháng
-                                        trời. Khi ngồi dc thì lại bị chèn dây thần kinh, thoát vị đĩa đệm, tay chân tê cứng,
-                                        không đi đứng được. Đi bệnh viện thì lại kêu phải mổ.... Nghe đến đây mh hoang mang
-                                        vô cùng. Người ta bảo nếu mổ thì phần trăm đi lại rất thấp. Vậy có phải còn khổ hơn
-                                        ko.
-                                        Rồi vô tình mh tìm dc một trang tiktok có tên là DG Gonstead thu hút rất nhiều lượt
-                                        xem và còn đem lại rất nhiều niềm vui cho mọi người. Mình đã " trốn viện" hi. Thật
-                                        sáng suốt.
-                                        Một cơ sở trị liệu xương khớp. Nơi mà mẹ e cảm thấy thật vui khi giống cái năng
-                                        khiếu mà mẹ đã có dc." Nhưng đến lúc mh bị thì đành chịu bó tay". Mẹ đã đỡ rất
-                                        nhiều, đứng lên không còn khó khăn như trước. Bước đi được nhiều hơn. Tự chăm sóc
-                                        bản thân, tự nấu món ăn mà mh thích. Cảm ơn a Dao Anh Dung tuy chưa gặp a lần nào
-                                        nhưng a rất nhiệt tình và rất tận tâm, nhờ có a a đã đem lại nhiều niềm vui cho mọi
-                                        người.
-                                        Em cảm ơn vì tất cả.
-                                    </h6>
-
-                                    <small class="carousel-name"><span class="carousel-name-title">Mui</span></small>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                        <ol class="carousel-indicators">
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="0" class="active">
-                                <img src="{{ asset('assets/client/images/avatar/feedback-1.jpg') }}"
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar">
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="1" class="">
-                                <img src="{{ asset('assets/client/images/avatar/feedback-2.jpg') }}"
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar">
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="2" class="">
-                                <img src="{{ asset('assets/client/images/avatar/feedback-3.jpg') }}"
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar">
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="3" class="">
-                                <img src="{{ asset('assets/client/images/avatar/feedback-4.jpg') }}"
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar">
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="4" class="">
-                                <img src="{{ asset('assets/client/images/avatar/feedback-1.jpg') }}"
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar">
-                            </li>
-                        </ol>
-                    </div>
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="fw-bold" style="font-size: 2.2rem; color: #1d1d1f; letter-spacing: -0.5px;">
+                        @lang('master_pages.social.title')
+                    </h2>
+                    <p class="text-muted mt-2" style="font-size: 1.1rem;">
+                        @lang('master_pages.social.subtitle')
+                    </p>
                 </div>
-
             </div>
-        </div>
-    </section>
 
+            <div class="row justify-content-center gap-lg-4">
 
-    <section class="contact-section section-padding" id="section_5">
-        <div class="container">
-            <div class="row">
+                <div class="col-lg-5 col-md-6 col-12 mb-4 d-flex">
+                    <div class="apple-social-card w-100">
+                        <div class="social-header px-4 pt-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="social-icon fb-icon"><i class="bi bi-facebook"></i></div>
+                                <div>
+                                    <h4 class="mb-0 fw-bold fs-5">@lang('master_pages.social.fb_title')</h4>
+                                    <span class="text-muted" style="font-size: 0.85rem;">@lang('master_pages.social.fb_desc')</span>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/profile.php?id=61554579022426" target="_blank"
+                                class="btn-social-follow fb-btn">
+                                @lang('master_pages.social.follow_fb')
+                            </a>
+                        </div>
 
-                <div class="col-lg-5 col-12 ms-auto mb-5 mb-lg-0">
-                    <div class="contact-info-wrap">
-                        <h2>@lang('master_pages.header.contact')</h2>
-
-                        <div class="contact-info">
-                            <h5 class="mt-3">Cơ sở TP. Hồ Chí Minh</h5>
-
-                            <p class="d-flex mb-2">
-                                <i class="bi-geo-alt me-2"></i>
-                                <a target="_blank" href="https://maps.app.goo.gl/KSAsd8MyUS1EsBnJ8">@lang('master_pages.footer.address')
-                                    @lang('master_pages.footer.addHCM')
-                                </a>
-                            </p>
-
-                            <p class="d-flex mb-2">
-                                <i class="bi bi-phone me-2"></i>
-                                <a href="tel:1900 633 287">
-                                    @lang('master_pages.footer.phone') 1900 633 287
-                                </a>
-                                <a href="tel:0972767973">&nbsp;-&nbsp;0972767973
-                                </a>
-                                <a href="tel:0777821112">&nbsp;-&nbsp;0777821112
-                                </a>
-                            </p>
-
-                            <h5 class="mt-5">Cơ sở TP. Đà Lạt</h5>
-
-                            <p class="d-flex mb-2">
-                                <i class="bi-geo-alt me-2"></i>
-                                <a target="_blank" href="https://maps.app.goo.gl/rW3snWe7fsFUzm2D6">@lang('master_pages.footer.address')
-                                    @lang('master_pages.footer.addDL')
-                                </a>
-                            </p>
-
-                            <p class="d-flex mb-2">
-                                <i class="bi bi-phone me-2"></i>
-                                <a href="tel:0943913311">
-                                    @lang('master_pages.footer.phone') 0943 91 33 11
-                                </a>
-                                <a href="tel:0937813311">&nbsp;-&nbsp;0937 81 33 11
-                                </a>
-                            </p>
+                        <div class="social-embed-wrapper mt-4">
+                            <iframe
+                                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61554579022426&tabs=timeline&width=400&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                width="100%" height="400"
+                                style="border:none;overflow:hidden; width:100%; max-width:400px;" scrolling="no"
+                                frameborder="0" allowfullscreen="true"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                            </iframe>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-12 mx-auto custom-form contact-form">
-                    <h5>Cơ sở TP. Hồ Chí Minh</h5>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.406329420679!2d106.7556882!3d10.780158799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752500640e2cbf%3A0xda2338d491d15f40!2zQ8ahIHPhu58ga-G7uSB0aHXhuq10IFBIQ04gREcgR29uc3RlYWQ!5e0!3m2!1svi!2s!4v1757240983574!5m2!1svi!2s"
-                        width="100%" height="160px" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="col-lg-5 col-md-6 col-12 mb-4 d-flex">
+                    <div class="apple-social-card w-100">
+                        <div class="social-header px-4 pt-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="social-icon tiktok-icon"><i class="bi bi-tiktok"></i></div>
+                                <div>
+                                    <h4 class="mb-0 fw-bold fs-5">@lang('master_pages.social.tiktok_title')</h4>
+                                    <span class="text-muted" style="font-size: 0.85rem;">@lang('master_pages.social.tiktok_desc')</span>
+                                </div>
+                            </div>
+                            <a href="https://www.tiktok.com/@dunggonstead" target="_blank"
+                                class="btn-social-follow tiktok-btn">
+                                @lang('master_pages.social.follow_tiktok')
+                            </a>
+                        </div>
 
-                    <h5 class="mt-3">Cơ sở TP. Đà Lạt</h5>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.5957044188126!2d108.44013267530345!3d11.933199488294807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317113658119e305%3A0xaf3b20db863a964f!2zREcgR29uc3RlYWQgxJDDoCBM4bqhdA!5e0!3m2!1svi!2s!4v1775116930011!5m2!1svi!2s"
-                        width="100%" height="160px" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="social-embed-wrapper mt-4">
+                            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dunggonstead"
+                                data-unique-id="dunggonstead" data-embed-type="creator"
+                                style="max-width: 100%; min-width: 288px; width: 100%; margin: 0; padding: 0;">
+                                <section>
+                                    <a target="_blank"
+                                        href="https://www.tiktok.com/@dunggonstead?refer=creator_embed">@dunggonstead</a>
+                                </section>
+                            </blockquote>
+                            <script async src="https://www.tiktok.com/embed.js"></script>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 @endsection
 @push('js')
-    {{-- <script src="{{ versionResource('frontend/js/home.min.js') }}" defer></script> --}}
+    <script src="{{ versionResource('assets/client/js/contact.js') }}" defer></script>
 @endpush

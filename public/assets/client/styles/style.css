@@ -537,7 +537,6 @@ strong {
 
 .globalnav-languages-item {
   text-align: right;
-  padding: 15px 0;
   position: relative;
 }
 
@@ -648,7 +647,7 @@ strong {
   font-size: var(--copyright-font-size);
 }
 
-.site-header .social-icon {
+.site-header .social-icon-home {
   text-align: right;
 }
 
@@ -1450,18 +1449,18 @@ blockquote::before {
 /*---------------------------------------
   SOCIAL ICON               
 -----------------------------------------*/
-.social-icon {
+.social-icon-home {
   margin: 0;
   padding: 0;
 }
 
-.social-icon-item {
+.social-icon-item-home {
   list-style: none;
   display: inline-block;
   vertical-align: top;
 }
 
-.social-icon-link {
+.social-icon-link-home {
   background: var(--secondary-color);
   border-radius: var(--border-radius-large);
   color: var(--white-color);
@@ -1474,7 +1473,7 @@ blockquote::before {
   line-height: 38px;
 }
 
-.social-icon-link:hover {
+.social-icon-link-home:hover {
   background: var(--primary-color);
   color: var(--white-color);
 }

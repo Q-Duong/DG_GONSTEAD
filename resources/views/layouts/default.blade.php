@@ -4,28 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        @yield('title')DG Gonstead
-    </title>
-    <meta name="description" content="@yield('title') DG Gonstead">
-    <meta name="keywords" content="@yield('title') DG Gonstead">
-    <meta name="author" content="DG Gonstead">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- #FAVICONS -->
-    <link rel='shortcut icon' href="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" type="image/x-icon">
-    <link rel='icon' href="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" type="image/x-icon">
-    <link rel='canonical' href="{{ url()->current() }}">
-    <!-- Open Graph Metadata for Social Media -->
-    <meta property="og:title" content="@yield('title') DG Gonstead">
-    <meta property="og:description" content="@yield('title') DG Gonstead">
-    <meta property="og:image" content="https://vart.vn/assets/images/logo/dg-gonstead-logo.png">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:locale" content="{{ App::getLocale() == 'vn' ? 'vi-VN' : 'en-US' }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- Title gọn gàng trên 1 dòng --}}
+    <title>@yield('title', 'DG Gonstead - Phục hồi cột sống không xâm lấn')</title>
+    
+    <meta name="description" content="@yield('seo_description', 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống chuẩn Mỹ, điều trị thoát vị đĩa đệm, thoái hóa không cần phẫu thuật.')">
+    <meta name="keywords" content="@yield('seo_keywords', 'Gonstead, nắn chỉnh cột sống, thoát vị đĩa đệm, DG Gonstead')">
+    <meta name="author" content="DG Gonstead">
+    
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" type="image/x-icon">
+
     <meta property="og:site_name" content="DG Gonstead">
     <meta property="og:type" content="website">
-    <link rel='shortcut icon' href="{{ asset('frontend/img/new-logo.jpg') }}" />
-    <!-- Css Styles -->
+    <meta property="og:locale" content="{{ App::getLocale() == 'vn' ? 'vi-VN' : 'en-US' }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'DG Gonstead - Phục hồi cột sống không xâm lấn')">
+    <meta property="og:description" content="@yield('seo_description', 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống chuẩn Mỹ, điều trị thoát vị đĩa đệm, thoái hóa không cần phẫu thuật.')">
+    <meta property="og:image" content="@yield('seo_image', asset('assets/images/logo/dg-gonstead-logo.png'))">
+
     <link rel="stylesheet" href="{{ asset('assets/client/styles/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/client/styles/bootstrap-icons.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/client/styles/style.css') }}" type="text/css">

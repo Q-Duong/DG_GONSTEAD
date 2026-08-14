@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Medical News & Gonstead Method Updates | DG Gonstead',
+        'description' => 'Update spinal protection knowledge, medical news, and the latest activities at DG Gonstead rehabilitation clinic.',
+    ],
+    
     'comments' => 'Comments',
     'writtenBy' => 'Written by',
     'leaveComment' => 'Leave A Comment',
