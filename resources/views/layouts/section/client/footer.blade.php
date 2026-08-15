@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-12 mb-4">
-                <img src="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" class="logo img-fluid" alt="@lang('master_pages.footer.logo_alt')">
+                <img src="{{ asset('assets/images/logo/dg-gonstead-logo.png') }}" class="logo img-fluid"
+                    alt="@lang('master_pages.footer.logo_alt')">
             </div>
             <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <h5 class="site-footer-title mb-3">@lang('master_pages.footer.quickLinks')</h5>
@@ -43,26 +44,23 @@
 
             <div class="col-lg-6 col-md-6 col-12 mx-auto">
                 <h5 class="site-footer-title mb-3">@lang('master_pages.header.contact')</h5>
-                <p class="d-flex mb-2">
-                    <a href="tel:1900633287" class="site-footer-link">
-                        <i class="bi-telephone me-2"></i>
-                        @lang('master_pages.footer.hotline') 1900 633 287
-                    </a>
-                </p>
 
-                <p class="d-flex mb-2">
+                <p class=" mb-2">
+                    <i class="bi bi-phone me-2 site-footer-link"></i>
+                    <a href="tel:1900633287" class="site-footer-link">@lang('master_pages.footer.phone') @lang('contact.info.branch_1.phone3')&nbsp;</a> -
                     <a href="tel:0972767973" class="site-footer-link">
-                        <i class="bi bi-phone me-2"></i>
-                        @lang('master_pages.footer.phone') 0972 76 79 73
+                        &nbsp;@lang('contact.info.branch_1.phone')&nbsp;</a>
+                    -
+                    <a href="tel:0777821112" class="site-footer-link">&nbsp;@lang('contact.info.branch_1.phone2')
                     </a>
                 </p>
 
-                <p class="d-flex mb-2 site-footer-link">
+                <p class=" mb-2 site-footer-link">
                     <i class="bi bi-clock me-2"></i>
                     @lang('master_pages.footer.workingHours')
                 </p>
 
-                <p class="d-flex mb-4">
+                <p class=" mb-4">
                     <a target="_blank" href="https://maps.app.goo.gl/KSAsd8MyUS1EsBnJ8" class="site-footer-link">
                         <i class="bi-geo-alt me-2"></i>@lang('master_pages.footer.address')
                         @lang('master_pages.footer.addHCM')

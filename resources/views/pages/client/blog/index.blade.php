@@ -19,12 +19,14 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
             transform: translateY(-5px);
         }
+
         .apple-blog-img-wrapper {
             width: 100%;
             height: 220px;
             overflow: hidden;
             display: block;
         }
+
         .apple-blog-img {
             width: 100%;
             height: 100%;
@@ -105,7 +107,7 @@
     <section class="news-section section-padding" id="section_news_list">
         <div class="container">
             <div class="row">
-                @foreach ($blogs as $key => $blog)
+                {{-- @foreach ($blogs as $key => $blog)
                     <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
                         <div class="apple-blog-card w-100">
                             <a href="{{ route('blog.detail', $blog->blog_slug) }}" class="apple-blog-img-wrapper">
@@ -128,18 +130,57 @@
 
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
-                <div class="col-12 text-center mt-5">
-                    {{-- Nếu bạn dùng pagination của Laravel, bạn có thể custom giao diện nó sau --}}
-                    {{-- {{ $blogs->links('pagination::bootstrap-5') }} --}}
+                <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
+                    <div class="apple-blog-card w-100">
+                        <a target="_blank"
+                            href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ"
+                            class="apple-blog-img-wrapper">
+                            <img src="{{ asset('assets/client/images/news/medium-shot-1.jpg') }}" class="apple-blog-img"
+                                alt="">
+                        </a>
+                        <div class="apple-blog-content">
+                            <div>
+                                <div class="apple-blog-date">
+                                    <i class="bi-calendar-event me-2"></i>
+                                    28 tháng 2,2026
+                                </div>
+
+                                <a target="_blank"
+                                    href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ"
+                                    class="apple-blog-title">
+                                    Đào Anh Dũng - Người xây nền móng cho điều trị cột sống chuẩn mực tại Việt Nam
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
+                    <div class="apple-blog-card w-100">
+                        <a target="_blank"
+                                    href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ"
+                            class="apple-blog-img-wrapper">
+                            <img src="{{ asset('assets/client/images/news/medium-shot-2.png') }}" class="apple-blog-img"
+                                alt="">
+                        </a>
+                        <div class="apple-blog-content">
+                            <div>
+                                <div class="apple-blog-date">
+                                    <i class="bi-calendar-event me-2"></i>
+                                    24 tháng 3,2026
+                                </div>
+
+                                <a target="_blank"
+                                    href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ"
+                                    class="apple-blog-title">
+                                    DG Gonstead và sứ mệnh phục hồi cột sống không xâm lấn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
     </section>
 @endsection
-
-@push('js')
-    {{-- JS riêng cho trang blog --}}
-@endpush

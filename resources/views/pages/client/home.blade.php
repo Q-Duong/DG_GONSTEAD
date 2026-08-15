@@ -802,48 +802,85 @@
         </div>
     </section>
 
-    @if (count($blogs) > 0)
-        <section class="news-section section-padding">
-            <div class="container">
-                <div class="row">
+    <section class="news-section section-padding" id="section_4">
+        <div class="container">
+            <div class="row">
 
-                    <div class="col-lg-12 col-12 mb-5">
-                        <h2>@lang('master_pages.header.blog')</h2>
-                    </div>
+                <div class="col-lg-12 col-12 mb-5">
+                    <h2>@lang('master_pages.header.blog')</h2>
+                </div>
 
-                    @foreach ($blogs as $key => $blog)
-                        <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
-                            <div class="apple-blog-card w-100">
-                                <a href="{{ route('blog.detail', $blog->blog_slug) }}" class="apple-blog-img-wrapper">
-                                    <img src="{{ asset('assets/client/images/news/medium-shot-1.jpg') }}"
-                                        class="apple-blog-img" alt="{{ $blog->blog_title }}">
-                                </a>
+                <div class="col-lg-6 col-12">
+                    <div class="news-block">
+                        <div class="news-block-top">
+                            <a target="_blank" href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
+                                <img src="{{ asset('assets/client/images/news/medium-shot-1.jpg') }}"
+                                    class="news-image img-fluid" alt="">
+                            </a>
+                        </div>
 
-                                <div class="apple-blog-content">
-                                    <div>
-                                        <div class="apple-blog-date">
-                                            <i class="bi-calendar-event me-2"></i>
-                                            {{ App::getLocale() == 'en' ? $blog->created_at->locale('en')->isoFormat('MMMM D, YYYY') : $blog->created_at->locale('vi')->isoFormat('D MMMM, YYYY') }}
-                                        </div>
-
-                                        <a href="{{ route('blog.detail', $blog->blog_slug) }}" class="apple-blog-title">
-                                            {{ $blog->blog_title }}
-                                        </a>
-                                    </div>
+                        <div class="news-block-info">
+                            <div class="d-flex mt-2">
+                                <div class="news-block-date">
+                                    <p>
+                                        <i class="bi-calendar4 custom-icon me-1"></i>
+                                        12:18 28/02/2026
+                                    </p>
                                 </div>
+                            </div>
 
+                            <div class="news-block-title mb-2">
+                                <h4><a target="_blank" href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ" class="news-block-title-link">Đào Anh Dũng - Người xây nền móng cho điều trị cột sống chuẩn mực tại Việt Nam</a></h4>
+                            </div>
+
+                            <div class="news-block-body">
+                                <p>TRUNG TÂM THÔNG TIN TƯ LIỆU SỨC KHỎE VÀ CỘNG ĐỒNG</p>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
 
-                    <div class="view-more-wrapper">
-                        <a href="{{ route('blog.index') }}" class="apple-btn-submit" previewlistener="true">
-                            @lang('master_pages.button.view_more')</a>
+
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="news-block">
+                        <div class="news-block-top">
+                            <a target="_blank" href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
+                                <img src="{{ asset('assets/client/images/news/medium-shot-2.png') }}"
+                                    class="news-image img-fluid" alt="">
+                            </a>
+                        </div>
+
+                        <div class="news-block-info">
+                            <div class="d-flex mt-2">
+                                <div class="news-block-date">
+                                    <p>
+                                        <i class="bi-calendar4 custom-icon me-1"></i>
+                                        16:43 24/03/2026
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="news-block-title mb-2">
+                                <h4><a target="_blank" href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ" class="news-block-title-link">DG Gonstead và sứ mệnh phục hồi cột sống không xâm lấn</a>
+                                </h4>
+                            </div>
+
+                            <div class="news-block-body">
+                                <p>TRANG THÔNG TIN TRUYỀN THÔNG PHÁP LUẬT & CUỘC SỐNG</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="view-more-wrapper">
+                    <a href="{{ route('blog.index') }}" class="apple-btn-submit" previewlistener="true">
+                        @lang('master_pages.button.view_more')</a>
+                </div>
+
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
 
     <section class="section-padding" style="background-color: #fbfbfd;">
         <div class="container">

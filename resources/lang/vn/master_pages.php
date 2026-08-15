@@ -28,7 +28,7 @@ return [
         'hotline' => 'Hotline:',
         'phone' => 'Điện Thoại:',
         'workingHours' => 'Giờ làm việc: Thứ 2 - Thứ 7 8:00 - 17:00',
-        'address' => 'Địa Chỉ:',
+        'address' => 'Trụ sở chính:',
         'addHCM' => '94 Đồng Văn Cống, P. Cát Lái, TP. Hồ Chí Minh (Ngã ba giao với đường Tạ Hiện)',
         'addDL' => 'TP. Đà Lạt', // Giữ hờ nếu sau này bạn mở lại chi nhánh
         'connectWithUs' => 'Kết nối với chúng tôi',
