@@ -23,9 +23,9 @@ return [
         'branch_2' => [
             'name' => 'DG Gonstead Hà Nội',
             'address' => '63 Louis I, Khu đô thi Louis City Đại Mỗ, P. Đại Mỗ, Hà Nội',
-            'phone' => '0931 731 319',
-            'phone2' => '0931 761 319',
-            'phone3' => '0931 711 319'
+            'phone' => '0931 71 13 19',
+            'phone2' => '0931 73 13 19',
+            'phone3' => '0931 76 13 19'
         ],
         'branch_3' => [
             'name' => 'DG Gonstead Đà Lạt',
