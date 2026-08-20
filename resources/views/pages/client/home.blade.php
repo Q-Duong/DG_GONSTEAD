@@ -2,6 +2,7 @@
 @section('title', __('master_pages.seo.title'))
 @section('seo_description', __('master_pages.seo.description'))
 @push('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     {{-- <link rel="stylesheet" href="{{ versionResource('assets/css/main.built.css') }}" type="text/css" as="style" /> --}}
     <style>
         .apple-service-card {
@@ -813,7 +814,8 @@
                 <div class="col-lg-6 col-12">
                     <div class="news-block">
                         <div class="news-block-top">
-                            <a target="_blank" href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
+                            <a target="_blank"
+                                href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
                                 <img src="{{ asset('assets/client/images/news/medium-shot-1.jpg') }}"
                                     class="news-image img-fluid" alt="">
                             </a>
@@ -830,7 +832,10 @@
                             </div>
 
                             <div class="news-block-title mb-2">
-                                <h4><a target="_blank" href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ" class="news-block-title-link">Đào Anh Dũng - Người xây nền móng cho điều trị cột sống chuẩn mực tại Việt Nam</a></h4>
+                                <h4><a target="_blank"
+                                        href="https://suckhoevacongdong.com/dao-anh-dung-nguoi-xay-nen-mong-cho-dieu-tri-cot-song-chuan-muc-tai-viet-namhtml-4877.html?fbclid=IwY2xjawQ3CZdleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ"
+                                        class="news-block-title-link">Đào Anh Dũng - Người xây nền móng cho điều trị cột
+                                        sống chuẩn mực tại Việt Nam</a></h4>
                             </div>
 
                             <div class="news-block-body">
@@ -845,7 +850,8 @@
                 <div class="col-lg-6 col-12">
                     <div class="news-block">
                         <div class="news-block-top">
-                            <a target="_blank" href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
+                            <a target="_blank"
+                                href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ">
                                 <img src="{{ asset('assets/client/images/news/medium-shot-2.png') }}"
                                     class="news-image img-fluid" alt="">
                             </a>
@@ -862,7 +868,10 @@
                             </div>
 
                             <div class="news-block-title mb-2">
-                                <h4><a target="_blank" href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ" class="news-block-title-link">DG Gonstead và sứ mệnh phục hồi cột sống không xâm lấn</a>
+                                <h4><a target="_blank"
+                                        href="https://phapluatcuocsong.com/dg-gonstead-va-su-menh-phuc-hoi-cot-song-khong-xam-lan-a87734.html?fbclid=IwY2xjawQ3CWZleHRuA2FlbQIxMABicmlkETFmb1lpaFhNWUZISVg1Rm1vc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhiQ09AgKY_LbdE_7ersmee_MulKuYn0jueFeU9TGDQ2NsCf29Y4DtWZsOZ6_aem_D0EhNPnbJYMAl-qQa-PmyQ"
+                                        class="news-block-title-link">DG Gonstead và sứ mệnh phục hồi cột sống không xâm
+                                        lấn</a>
                                 </h4>
                             </div>
 
@@ -1012,7 +1021,7 @@
                                         placeholder="@lang('contact.form.phone')">
                                 </div>
                                 <div class="col-md-6 mb-4 position-relative">
-                                    <input type="date" class="apple-form-control w-100" name="date">
+                                    <input type="text" id="appointmentDate" class="apple-form-control w-100" name="date" placeholder="Chọn ngày khám" required>
                                 </div>
                             </div>
                             <div class="mb-4 position-relative">
@@ -1140,5 +1149,7 @@
     </section>
 @endsection
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/vn.js"></script>
     <script src="{{ versionResource('assets/client/js/contact.js') }}" defer></script>
 @endpush

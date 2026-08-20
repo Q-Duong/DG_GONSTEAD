@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'DG Gonstead - Chuyên gia điều trị thần kinh cột sống')</title>
+    <title>@yield('title', 'DG Gonstead - Cơ xương khớp - Thoát vị đĩa đệm')</title>
     
-    <meta name="description" content="@yield('seo_description', 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống chuẩn, chuyên gia điều trị thần kinh cột sống, điều trị thoát vị đĩa đệm, thoái hóa không cần phẫu thuật.')">
+    <meta name="description" content="@yield('seo_description', 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống chuẩn, cơ xương khớp, điều trị thoát vị đĩa đệm, thoái hóa không cần phẫu thuật.')">
     <meta name="keywords" content="@yield('seo_keywords', 'Gonstead, nắn chỉnh cột sống, thoát vị đĩa đệm, DG Gonstead')">
     <meta name="author" content="DG Gonstead">
     
@@ -23,7 +23,7 @@
     <meta property="og:locale" content="{{ App::getLocale() == 'vn' ? 'vi-VN' : 'en-US' }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', 'DG Gonstead - Phục hồi cột sống không xâm lấn')">
-    <meta property="og:description" content="@yield('seo_description', 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống, chuyên gia điều trị thần kinh cột sống, điều trị thoát vị đĩa đệm, thoái hóa không cần phẫu thuật.')">
+    <meta property="og:description" content="@yield('seo_description', 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống, cơ xương khớp, điều trị thoát vị đĩa đệm, thoái hóa không cần phẫu thuật.')">
     <meta property="og:image" content="@yield('seo_image', asset('assets/images/logo/dg-gonstead-logo.png'))">
 
     <link rel="stylesheet" href="{{ asset('assets/client/styles/bootstrap.css') }}" type="text/css">

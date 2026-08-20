@@ -46,6 +46,13 @@
                 <h5 class="site-footer-title mb-3">@lang('master_pages.header.contact')</h5>
 
                 <p class=" mb-2">
+                    <a target="_blank" href="https://maps.app.goo.gl/KSAsd8MyUS1EsBnJ8" class="site-footer-link">
+                        <i class="bi-geo-alt me-2"></i>@lang('master_pages.footer.address')
+                        @lang('master_pages.footer.addHCM')
+                    </a>
+                </p>
+
+                <p class=" mb-2">
                     <i class="bi bi-phone me-2 site-footer-link"></i>
                     <a href="tel:1900633287" class="site-footer-link">@lang('master_pages.footer.phone') @lang('contact.info.branch_1.phone3')&nbsp;</a> -
                     <a href="tel:0972767973" class="site-footer-link">
@@ -55,17 +62,12 @@
                     </a>
                 </p>
 
-                <p class=" mb-2 site-footer-link">
+                <p class=" mb-4 site-footer-link">
                     <i class="bi bi-clock me-2"></i>
                     @lang('master_pages.footer.workingHours')
                 </p>
 
-                <p class=" mb-4">
-                    <a target="_blank" href="https://maps.app.goo.gl/KSAsd8MyUS1EsBnJ8" class="site-footer-link">
-                        <i class="bi-geo-alt me-2"></i>@lang('master_pages.footer.address')
-                        @lang('master_pages.footer.addHCM')
-                    </a>
-                </p>
+                
                 <div class="d-flex mb-1">
                     <h5>@lang('master_pages.footer.connectWithUs')</h5>
                 </div>

@@ -62,3 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 });
+
+flatpickr("#appointmentDate", {
+    locale: "vn", // Hiển thị tiếng Việt (T2, T3, Tháng 1...)
+    dateFormat: "Y-m-d", // Định dạng chuẩn gửi về Database (để Laravel không bị lỗi)
+    altInput: true, // Tạo ra một ô input ảo cho người dùng nhìn
+    altFormat: "d/m/Y", // Định dạng hiển thị cho người dùng (Ngày/Tháng/Năm)
+    minDate: "today", // Không cho phép chọn ngày trong quá khứ
+    disableMobile: "true" // Giữ nguyên giao diện đẹp trên mobile
+});

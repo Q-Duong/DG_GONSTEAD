@@ -2,7 +2,7 @@
 
 return [
     'seo' => [
-        'title' => 'DG Gonstead - Chuyên gia điều trị thần kinh cột sống',
+        'title' => 'DG Gonstead - Cơ xương khớp - Thoát vị đĩa đệm',
         'description' => 'DG Gonstead ứng dụng kỹ thuật nắn chỉnh cột sống Gonstead , điều trị thoát vị đĩa đệm, thoái hóa cột sống an toàn, không cần phẫu thuật.',
     ],
 

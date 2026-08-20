@@ -4,6 +4,7 @@
 @section('seo_description', __('contact.seo.description'))
 
 @push('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         .apple-contact-card {
             background-color: #f5f5f7;
@@ -133,11 +134,11 @@
                             <h4 class="text-primary">@lang('contact.info.branch_1.name')</h4>
                             <p><i class="bi bi-pin-map text-muted me-2"></i>@lang('contact.info.branch_1.address')</p>
                             <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:1900633287"
-                                class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone3')</a> - <a
-                                href="tel:0972767973"
-                                class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone')</a> - <a
-                                href="tel:0777821112"
-                                class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone2')</a></p>
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone3')</a> - <a
+                                    href="tel:0972767973"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone')</a> - <a
+                                    href="tel:0777821112"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_1.phone2')</a></p>
                         </div>
                     </div>
 
@@ -147,11 +148,11 @@
                             <h4 class="text-primary">@lang('contact.info.branch_2.name')</h4>
                             <p><i class="bi bi-pin-map text-muted me-2"></i>@lang('contact.info.branch_2.address')</p>
                             <p><i class="bi bi-telephone text-muted me-2"></i><a href="tel:0931711319"
-                                class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone')</a> - <a
-                                href="tel:0931731319"
-                                class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone2')</a> - <a
-                                href="tel:0931761319"
-                                class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone3')</a></p>
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone')</a> - <a
+                                    href="tel:0931731319"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone2')</a> - <a
+                                    href="tel:0931761319"
+                                    class="text-decoration-none text-dark fw-bold">@lang('contact.info.branch_2.phone3')</a></p>
 
                         </div>
                     </div>
@@ -187,7 +188,7 @@
                                         placeholder="@lang('contact.form.phone')">
                                 </div>
                                 <div class="col-md-6 mb-4 position-relative">
-                                    <input type="date" class="apple-form-control w-100" name="date">
+                                    <input type="text" id="appointmentDate" class="apple-form-control w-100" name="date" placeholder="Chọn ngày khám" required>
                                 </div>
                             </div>
                             <div class="mb-4 position-relative">
@@ -236,5 +237,7 @@
     </section>
 @endsection
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/vn.js"></script>
     <script src="{{ versionResource('assets/client/js/contact.js') }}" defer></script>
 @endpush

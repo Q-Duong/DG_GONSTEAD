@@ -29,7 +29,7 @@ public function submitAppointment(Request $request)
 
     try {
         $adminEmail = 'Cskh@dggonstead.vn'; 
-        Mail::to($adminEmail)->send(new AppointmentMail($validatedData));
+        Mail::to($adminEmail)->cc('tuyentran162@gmail.com')->send(new AppointmentMail($validatedData));
 
         // Trả về JSON nếu gọi bằng AJAX
         if ($request->wantsJson()) {
